@@ -514,7 +514,12 @@ def spammer():
                 "x-debug-options": "bugReporterEnabled",
                 "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJjYW5hcnkiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC42MDAiLCJvc192ZXJzaW9uIjoiMTAuMC4yMjAwMCIsIm9zX2FyY2giOiJ4NjQiLCJzeXN0ZW1fbG9jYWxlIjoic2siLCJjbGllbnRfYnVpbGRfbnVtYmVyIjo5NTM1MywiY2xpZW50X2V2ZW50X3NvdXJjZSI6bnVsbH0="
             }
-            requests.post("https://discordapp.com/api/v9/invites/" + invite, headers=headers)
+            rrr = requests.post("https://discordapp.com/api/v9/invites/" + invite, headers=headers)
+            if rrr.status_code == 204 or 200:
+                print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET} Done')
+
+            else:
+                print('Error...')
 
 
         invite = input(f"Discord server invite: ")
@@ -528,6 +533,8 @@ def spammer():
         for token in tokens:
             time.sleep(delay)
             threading.Thread(target=join, args=(invite, token)).start()
+
+        time.sleep(3)
 
         b = input('Do you want to bypass member screening y/n?: ')
 
