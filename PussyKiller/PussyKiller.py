@@ -51,19 +51,13 @@ import os
 import emoji as ej
 import websocket
 from os import system
-from pypresence import Presence
 
-PresID = '902242707257307256'
-RPC = Presence(PresID)
-RPC.connect()
-start_time = time.time()
 
 
 ur = 'https://discord.com/api/v9/channels/messages'
 title = 'PussyKiller'
 system(f'title {title}')
 tokens = open('tokens.txt', 'r').read().splitlines()
-RPC.update(state='Loading to Menu', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large', start=start_time)
 
 
 def randstr(lenn):
@@ -79,7 +73,6 @@ def spammer():
     clear = lambda: os.system('cls')
     cl = clear()
 
-    RPC.update(state='In Menu', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',start=start_time)
 
     colorama.init()
     print('')
@@ -104,9 +97,6 @@ def spammer():
 
 
     if choice == 1:
-        RPC.update(state='Raiding Discord Servers', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
-
         tokens = open("tokens.txt", "r").read().splitlines()
         channel = input(f'Chanel ID: ')
         mess = input(f'Message: ')
@@ -180,8 +170,6 @@ def spammer():
 
 
     if choice == 2:
-        RPC.update(state='Raiding Dms', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
         def DMSpammer(idd, message, token):
             header = {
@@ -248,8 +236,6 @@ def spammer():
 
 
     if choice == 3:
-        RPC.update(state='Spamming with friend requests', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
         def friender(token, user):
             try:
@@ -294,8 +280,6 @@ def spammer():
 
 
     if choice == 4:
-        RPC.update(state='Reaction Spamming', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
         def reaction(chd, iddd, start, org, token):
             headers = {'Content-Type': 'application/json',
@@ -339,9 +323,6 @@ def spammer():
         exit = spammer()
 
     if choice == 5:
-        RPC.update(state='Webhook spamming', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
-
 
         def webhkspammer():
             webhook = input("Webhook Link: ")
@@ -372,8 +353,6 @@ def spammer():
         exit = spammer()
 
     if choice == 6:
-        RPC.update(state='Typing Spamming', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
         message = input("Message: ")
         amount = int(input("Amount of messages: "))
@@ -414,9 +393,7 @@ def spammer():
         print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} Status Changer')
         changg = int(input('[?]>'))
         if changg == 1:
-            RPC.update(state='Changing tokens about', details=('Raiding with ' + str(len(tokens)) + ' tokens.'),
-                       large_image='large',
-                       start=start_time)
+
             def abouttt(token, abbb):
                 try:
                     headers = {
@@ -454,9 +431,7 @@ def spammer():
                 threading.Thread(target=abouttt, args=(token, ab)).start()
 
         if changg == 2:
-            RPC.update(state='Changing tokens status', details=('Raiding with ' + str(len(tokens)) + ' tokens.'),
-                       large_image='large',
-                       start=start_time)
+
             print(f'{Fore.RED}Tokens must be online to see status{Fore.RESET}')
             text = input('Status: ')
             def ChangeStatus(token):
@@ -509,8 +484,6 @@ def spammer():
 
 
     if choice == 8:
-        RPC.update(state='Joining Discord Servers', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
 
         http.client._is_legal_header_name = re.compile(rb'[^\s][^:\r\n]*').fullmatch
@@ -608,8 +581,6 @@ def spammer():
 
 
     if choice == 9:
-        RPC.update(state='Leaving Discord Servers', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
 
         token = open("tokens.txt", "r").read().splitlines()
@@ -649,8 +620,6 @@ def spammer():
 
 
     if choice == 10:
-        RPC.update(state='Checking tokens', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
 
         def filter_tokens(unfiltered):
@@ -709,8 +678,6 @@ def spammer():
         exit = spammer()
 
     if choice == 11:
-        RPC.update(state='Sending tokens online', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
         def activity(token, act):
             ws = websocket.WebSocket()
@@ -748,8 +715,6 @@ def spammer():
 
 
     if choice == 12:
-        RPC.update(state='Joining HypeSquad', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
 
         print(f'''{Fore.LIGHTMAGENTA_EX}[1] {Fore.RESET}{Fore.MAGENTA}Bravery{Fore.RESET}
@@ -825,8 +790,6 @@ def spammer():
 
 
     if choice == 13:
-        RPC.update(state='MassReporting', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
 
         sent = 0
@@ -899,8 +862,6 @@ def spammer():
 
 
     if choice == 14:
-        RPC.update(state='Nuking Servers', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
 
 
@@ -1318,8 +1279,6 @@ def spammer():
 
 
     if choice == 15:
-        RPC.update(state='Nuking Accounts', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
         tokenn = input("Account Token: ")
 
@@ -1509,8 +1468,6 @@ def spammer():
 
 
     if choice == 16:
-        RPC.update(state='Bruteforcing Tokens', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
 
 
         print('Do not do this without the permission of the person to whom the bruteforce attack is conducted.')
@@ -1556,8 +1513,7 @@ def spammer():
 
 
     if choice == 17:
-        RPC.update(state='Reading About', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
+
 
         print(f'''{Fore.LIGHTMAGENTA_EX}Wassup buddy. This is fun made tool by Lososik...      
 If you have got some problems join https://dsc.gg/deadd or contact Lososik#0954.
@@ -1573,8 +1529,7 @@ Special thanks to H0LLOW for helping me with a few things.
 
 
     if choice == 18:
-        RPC.update(state='Exiting', details=('Raiding with ' + str(len(tokens)) + ' tokens.'), large_image='large',
-                   start=start_time)
+
         os.system('exit')
 
 spammer()
