@@ -461,17 +461,19 @@ def spammer():
         time.sleep(1)
 
         vcc = int(input('VC Channel ID: '))
-        while True:
-            voc = []
-            for i in tuk:
-                channel = i.get_channel(vcc)
-                voc.append(channel)
-            for channel in voc:
-                try:
-                    asc.create_task(channel.connect())
-                    print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Done')
-                except:
-                    pass
+        voc = []
+        for i in tuk:
+            channel = i.get_channel(vcc)
+            voc.append(channel)
+        for channel in voc:
+            asc.create_task(channel.connect())
+            print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Done')
+
+        time.sleep(5)
+        exit = input('press any key: ')
+        clear = lambda: os.system('cls')
+        exit = clear()
+        exit = spammer()
 
 
     if choice == 8:
