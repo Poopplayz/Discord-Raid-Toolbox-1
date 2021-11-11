@@ -1,5 +1,0 @@
-Fixed token onliner. 
-Added hypesquad joiner.
-Added About and Status changer.
-Fixed token checker.
-Improved NUKER.
