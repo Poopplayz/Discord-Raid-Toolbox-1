@@ -1,5 +1,0 @@
-Fixed token onliner. 
-Added nickname changer.
-Improved NUKER.
-Added token grabber.
-Added VC spammer.
