@@ -9,3 +9,4 @@ pip install websocket
 pip install http.client
 pip install selenium
 pip install discum
+pip install webdriver-manager
