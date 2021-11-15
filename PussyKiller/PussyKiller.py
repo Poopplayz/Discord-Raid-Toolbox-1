@@ -188,6 +188,7 @@ def secondHeader(token):
 def spammer():
     tokens = open('tokens.txt', 'r').read().splitlines()
     clear = lambda: os.system('cls')
+    clear()
 
     colorama.init()
     print('')
