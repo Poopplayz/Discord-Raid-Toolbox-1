@@ -496,30 +496,33 @@ def spammer():
         exit = spammer()
 
     if choice == 7:
-        tuk = []
-
         tokens = open("tokens.txt", "r").read().splitlines()
+
+        tuks = []
 
         asc = asyncio.new_event_loop()
         asyncio.set_event_loop(asc)
-
         for token in tokens:
-            bottuk = discord.Client(status=discord.Status.offline)
-            asc.create_task(bottuk.start(token, bot=False))
-            tuk.append(bottuk)
+            bot = discord.Client()
+            asc.create_task(bot.start(token, bot=False))
+            tuks.append(bot)
 
         threading.Thread(target=asc.run_forever).start()
 
-        time.sleep(1)
 
-        vcc = int(input('VC Channel ID: '))
-        voc = []
-        for i in tuk:
-            channel = i.get_channel(vcc)
-            voc.append(channel)
-        for channel in voc:
-            asc.create_task(channel.connect())
-            print(f'{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Done')
+        chan = []
+        idd = int(input("VC Channel ID: "))
+        for i in tuks:
+            channel = i.get_channel(idd)
+            chan.append(channel)
+        for channel in chan:
+            try:
+                asc.create_task(channel.connect())
+                print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Done")
+                asc.run_until_complete("yes")
+            except:
+                pass
+
 
         time.sleep(5)
         exit = input('press any key: ')
