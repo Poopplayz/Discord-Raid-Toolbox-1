@@ -1763,7 +1763,7 @@ def spammer():
 
     if choice == '20':
 
-        print('Do not do this without the permission of the person to whom the bruteforce attack is conducted. It isnt my tool it is only remake original is by Social 404')
+        print('Do not do this without the permission of the person to who the bruteforce attack is conducted.')
 
         id_to_token = base64.b64encode((input("Id of user: ")).encode("ascii"))
         id_to_token = str(id_to_token)[2:-1]
