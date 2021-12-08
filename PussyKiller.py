@@ -1172,7 +1172,7 @@ def spammer():
         for token in tokens:
             threading.Thread(target=ChangeStatus, args=(token, status)).start()
 
-    if choice == 17:
+    if choice == '17':
         print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} Illegal Content')
         print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} Harrassment')
         print(f'{Fore.LIGHTMAGENTA_EX}[3]{Fore.RESET} Spam or Phishing Links')
