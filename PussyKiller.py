@@ -219,7 +219,7 @@ def spammer():
     print(
         f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[3]{Fore.RESET} Friend Spammer{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[11]{Fore.RESET} Leaver            {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[19]{Fore.RESET} Account Nuker{Fore.RESET}{Fore.LIGHTMAGENTA_EX}    ║{Fore.RESET}')
     print(
-        f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[4]{Fore.RESET} Reaction Spam {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[12]{Fore.RESET} TokenChecker      {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[20]{Fore.RESET} Token type  {Fore.RESET}{Fore.LIGHTMAGENTA_EX}     ║{Fore.RESET}')
+        f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[4]{Fore.RESET} Reaction Spam {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[12]{Fore.RESET} TokenChecker      {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[20]{Fore.RESET} Token sniper  {Fore.RESET}{Fore.LIGHTMAGENTA_EX}   ║{Fore.RESET}')
     print(
         f'{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[5]{Fore.RESET} WebhookSpammer{Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[13]{Fore.RESET} Token Onliner     {Fore.LIGHTMAGENTA_EX}║{Fore.RESET}{Fore.LIGHTMAGENTA_EX}[21]{Fore.RESET} Token logger {Fore.RESET}{Fore.LIGHTMAGENTA_EX}    ║{Fore.RESET}')
     print(
